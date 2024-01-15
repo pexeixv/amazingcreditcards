@@ -7,6 +7,12 @@ module.exports = {
       fontFamily: {
         lexend: ['"Lexend Giga Variable"', ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        "b-2": "0 0.25rem 0 black;",
+        "b-4": "0 0.5rem 0 black;",
+        "b-6": "0 0.75rem 0 black;",
+        "b-8": "0 1rem 0 black;",
+      },
     },
   },
   plugins: [],

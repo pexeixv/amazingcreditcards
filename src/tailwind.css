@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl lg:text-6xl font-black;
+  }
+  h2 {
+    @apply text-2xl lg:text-4xl font-bold;
+  }
+  h3 {
+    @apply text-xl lg:text-3xl font-bold;
+  }
+  h4 {
+    @apply text-xl font-bold;
+  }
+  h4 {
+    @apply text-lg font-bold;
+  }
+  em {
+    @apply italic;
+  }
+  strong {
+    @apply font-bold;
+  }
+
+  .border-brutal-sm {
+    @apply rounded-lg border-2 border-black shadow-b-2;
+  }
+
+  .border-brutal {
+    @apply rounded-lg border-4 border-black shadow-b-4;
+  }
+
+  /* For debugging */
+  /* * {
+      @apply outline outline-[1px] outline-red-600;
+    } */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  #graph-bg {
+    background-color: #ffffff;
+    opacity: 0.3;
+    background-image: linear-gradient(#dedede 1px, transparent 1px),
+      linear-gradient(to right, #dedede 1px, #ffffff 1px);
+    background-size: 20px 20px;
+  }
+}

@@ -25,8 +25,8 @@ const links = [
 
 <footer class="bg-yellow-500 border-y-8 border-black">
   <div class="container mx-auto px-5 py-10 grid lg:grid-cols-12">
-    <div class="col-span-8 flex flex-col justify-center">
-      <div class="flex items-center gap-4">
+    <div class="lg:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-4 flex-wrap">
         {
           links.map((link) => (
             <a
@@ -38,7 +38,7 @@ const links = [
           ))
         }
       </div>
-      <div class="flex items-center gap-4 mt-4">
+      <div class="flex items-center gap-4 mt-4 flex-wrap">
         <p class="border-brutal-sm bg-white px-4 py-1 text-xs">
           &copy;2024 - All rights reserved.
         </p>
@@ -50,7 +50,7 @@ const links = [
         </a>
       </div>
     </div>
-    <div class="col-span-4 flex justify-end">
+    <div class="lg:col-span-4 flex justify-end">
       <img
         class="grayscale h-[120px]"
         src="/logo.png"

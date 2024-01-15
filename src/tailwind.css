@@ -32,7 +32,7 @@
     @apply rounded-lg border-4 border-black shadow-b-4;
   }
   .border-brutal-lg {
-    @apply rounded-lg border-6 border-black shadow-b-6;
+    @apply rounded-lg border-4 border-black shadow-b-6;
   }
 
   /* For debugging */

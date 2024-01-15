@@ -1,7 +1,206 @@
 ---
+import BankCard from "@/components/BankCard.astro";
+import CreditCard from "@/components/CreditCard.astro";
 import BaseLayout from "@/components/BaseLayout.astro";
+import H2 from "@/components/H2.astro";
+
+const banks = [
+  {
+    name: "HDFC Bank",
+    image: "/bank1.png",
+  },
+  {
+    name: "ICICI Bank",
+    image: "/bank2.png",
+  },
+  {
+    name: "State Bank of India",
+    image: "/bank3.png",
+  },
+  {
+    name: "Axis Bank",
+    image: "/bank4.png",
+  },
+  {
+    name: "IDFC First Bank",
+    image: "/bank5.png",
+  },
+  {
+    name: "AU Small Finance Bank",
+    image: "/bank6.png",
+  },
+  {
+    name: "RBL Bank",
+    image: "/bank7.png",
+  },
+  {
+    name: "American Express",
+    image: "/bank8.png",
+  },
+  {
+    name: "Kotak Mahindra",
+    image: "/bank9.png",
+  },
+  {
+    name: "IndusInd",
+    image: "/bank10.png",
+  },
+  {
+    name: "Bank of Baroda",
+    image: "/bank11.png",
+  },
+  {
+    name: "HSBC",
+    image: "/bank12.png",
+  },
+];
+
+const cards = [
+  {
+    name: "Flipkart Axis Bank Credit Card",
+    image: "/card1.png",
+    rating: 5,
+  },
+  {
+    name: "HDFC Bank Millennia Credit Card",
+    image: "/card2.png",
+    rating: 4,
+  },
+  {
+    name: "SBI SimplyCLICK Credit Card",
+    image: "/card3.png",
+    rating: 5,
+  },
+];
 ---
 
 <BaseLayout>
-  <h1>Astro</h1>
+  <section class="border-y-8 border-black">
+    <div
+      class="container mx-auto px-5 py-16 lg:py-32 grid lg:grid-cols-2 gap-12"
+    >
+      <div class="flex flex-col items-start">
+        <h1 class="tracking-tighter">
+          Discover the <br class="max-lg:hidden" /> Perfect Credit <br
+            class="max-lg:hidden"
+          /> Card for You
+        </h1>
+        <p class="mt-8 max-w-2xl text-lg">
+          Embark on your financial journey with Amazing Credit Cards - where the
+          perfect card tailored to your needs awaits discovery.
+        </p>
+        <a
+          class="mt-8 bg-yellow-500 py-2 px-8 border-brutal hover:bg-yellow-400 transition-all duration-300 hover:border-brutal-lg"
+          href="#"
+        >
+          Explore →</a
+        >
+      </div>
+      <div class="flex justify-end">
+        <img src="/hero.svg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y-8 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <H2 title="Top credit card issuers" />
+
+      <div
+        class="mt-16 lg:mt-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16"
+      >
+        {
+          banks.map((bank) => (
+            <BankCard name={bank.name} image={bank.image} link={bank.link} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y-8 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <H2 title="Most popular credit cards" />
+
+      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
+        {
+          cards.map((card) => (
+            <CreditCard
+              name={card.name}
+              image={card.image}
+              apply={card.apply}
+              learn={card.learn}
+              rating={card.rating}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sr-only">FAQ</h2>
+    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+      <div
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-8 border-black max-lg:border-b-8"
+      >
+        <h3>What Is A Credit Card?</h3>
+      </div>
+      <div
+        class="bg-white p-12 lg:p-20 lg:border-l-8 border-black text-justify max-lg:border-t-8"
+      >
+        <p>
+          A credit card is a financial instrument that has a pre-loaded balance
+          that the cardholder can use to make transactions and pay for them
+          later. The card issuer will let you pay off the balance fully,
+          interest-free, for up to 50 days from the date of payment. To avoid
+          any fines, the cardholder can pay the minimum amount due (which can be
+          anywhere between 5% to 10% on the total amount owed). The balance,
+          however, will be carried forward to the next month, and interest set
+          by the credit card company will be levied.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+      <div
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-l-8 border-black max-lg:border-b-8"
+      >
+        <h3>Why Get A Credit Card?</h3>
+      </div>
+      <div
+        class="bg-white p-12 lg:p-20 lg:border-r-8 border-black text-justify lg:row-start-1 max-lg:border-t-8"
+      >
+        <p>
+          Let's start from the beginning: Why should you get your first credit
+          card, let alone a bunch of credit cards? Credit cards sometimes get a
+          bad rap, but they are a tool you can use to build credit, earn cash
+          back, earn travel rewards, or get access to other really cool perks.
+          The key is using credit cards responsibly.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+      <div
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-8 border-black max-lg:border-b-8"
+      >
+        <h3>How does a Credit Card work?</h3>
+      </div>
+      <div
+        class="bg-white p-12 lg:p-20 lg:border-l-8 border-black text-justify max-lg:border-t-8"
+      >
+        <p>
+          A credit card allows delayed payment for purchases, essentially
+          borrowing from the issuer until the month's end. Know that credit card
+          eligibility depends on a stable income and a good credit score, and it
+          can also be secured against a fixed deposit. Your credit limit, 3 to 5
+          times your monthly salary, varies by bank. While popular banks provide
+          the card, payment gateways like Visa, MasterCard, and RuPay handle
+          transactions, leaving terms like minimum due, interest, and rewards to
+          the issuer's discretion.
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

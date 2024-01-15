@@ -1,0 +1,43 @@
+---
+interface Props {
+  name?: string;
+  image: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  learn?: string;
+  apply?: string;
+}
+const {
+  name = "Bank Name",
+  image,
+  rating,
+  learn = "#",
+  apply = "#",
+} = Astro.props as Props;
+
+const numberArray = (n) =>
+  Array.from({ length: parseInt(n, 10) }, (_, index) => index) as Array<Number>;
+---
+
+<div
+  class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center hover:bg-yellow-500 transition-colors duration-300 group"
+>
+  <img src={image} alt={name} class="h-[180px]" />
+
+  <div class="flex items-center gap-2 mt-6">
+    {numberArray(rating).map((n) => <img src="/star-yellow.svg" />)}
+    {numberArray(5 - rating).map((n) => <img src="/star-white.svg" />)}
+  </div>
+  <h3 class="lg:text-xl mt-4">{name}</h3>
+  <a
+    class="mt-8 bg-white py-1 px-4 border-brutal transition-all duration-300 w-full group-hover:bg-yellow-500 group-hover:hover:bg-yellow-400"
+    href={learn}
+  >
+    Learn more</a
+  >
+  <a
+    class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 w-full group-hover:bg-white group-hover:hover:bg-white/80"
+    href={apply}
+  >
+    Apply now</a
+  >
+</div>

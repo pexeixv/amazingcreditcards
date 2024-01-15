@@ -1,1 +1,61 @@
-<footer>footer</footer>
+---
+const links = [
+  {
+    label: "Home",
+    link: "/",
+  },
+  {
+    label: "Categories",
+    link: "/",
+  },
+  {
+    label: "Issuers",
+    link: "/",
+  },
+  {
+    label: "Blog",
+    link: "/",
+  },
+  {
+    label: "About",
+    link: "/",
+  },
+];
+---
+
+<footer class="bg-yellow-500 border-y-8 border-black">
+  <div class="container mx-auto px-5 py-10 grid lg:grid-cols-12">
+    <div class="col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-4">
+        {
+          links.map((link) => (
+            <a
+              href={link.link}
+              class="border-brutal-sm bg-white hover:bg-white/80 transition-colors duration-300 px-4 py-1 text-xs"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex items-center gap-4 mt-4">
+        <p class="border-brutal-sm bg-white px-4 py-1 text-xs">
+          &copy;2024 - All rights reserved.
+        </p>
+        <a
+          href="//gavinpereira.in"
+          class="border-brutal-sm bg-white hover:bg-white/80 transition-colors duration-300 px-4 py-1 text-xs"
+        >
+          <i class="fas fa-code"></i> by Gavin Pereira
+        </a>
+      </div>
+    </div>
+    <div class="col-span-4 flex justify-end">
+      <img
+        class="grayscale h-[120px]"
+        src="/logo.png"
+        alt="Amazing Credit Cards"
+      />
+    </div>
+  </div>
+</footer>

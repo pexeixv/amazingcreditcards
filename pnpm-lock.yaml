@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/check': ^0.4.1
   '@astrojs/tailwind': ^5.1.0
   '@fontsource-variable/lexend-giga': ^5.0.16
+  '@fortawesome/fontawesome-free': ^6.5.1
   astro: ^4.0.0
   tailwindcss: ^3.0.24
   typescript: ^5.3.3
@@ -12,6 +13,7 @@ dependencies:
   '@astrojs/check': 0.4.1_typescript@5.3.3
   '@astrojs/tailwind': 5.1.0_yzxwxlvq6qqym6oouvjmwtfhvm
   '@fontsource-variable/lexend-giga': 5.0.16
+  '@fortawesome/fontawesome-free': 6.5.1
   astro: 4.1.2_typescript@5.3.3
   tailwindcss: 3.4.1
   typescript: 5.3.3
@@ -600,6 +602,12 @@ packages:
 
   /@fontsource-variable/lexend-giga/5.0.16:
     resolution: {integrity: sha512-SM9FH7UH+bKAm/HPCxddGiCLBYAcaCA/0UR5sPgmmgcXZuxOFOniXtDt2KReA0N0WF5lICV3lmKUlcmkK3Z6ug==}
+    dev: false
+
+  /@fortawesome/fontawesome-free/6.5.1:
+    resolution: {integrity: sha512-CNy5vSwN3fsUStPRLX7fUYojyuzoEMSXPl7zSLJ8TgtRfjv24LOnOWKT2zYwaHZCJGkdyRnTmstR0P+Ah503Gw==}
+    engines: {node: '>=6'}
+    requiresBuild: true
     dev: false
 
   /@isaacs/cliui/8.0.2:

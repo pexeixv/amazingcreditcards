@@ -28,9 +28,11 @@
   .border-brutal-sm {
     @apply rounded-lg border-2 border-black shadow-b-2;
   }
-
   .border-brutal {
     @apply rounded-lg border-4 border-black shadow-b-4;
+  }
+  .border-brutal-lg {
+    @apply rounded-lg border-6 border-black shadow-b-6;
   }
 
   /* For debugging */
@@ -42,5 +44,12 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  #graph-bg {
+    background-color: #ffffff;
+    opacity: 0.3;
+    background-image: linear-gradient(#dedede 1px, transparent 1px),
+      linear-gradient(to right, #dedede 1px, #ffffff 1px);
+    background-size: 20px 20px;
   }
 }

@@ -2,6 +2,7 @@
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import "@fontsource-variable/lexend-giga";
+import "@/tailwind.css";
 
 interface Props {
   title?: string;
@@ -24,5 +25,6 @@ const { title = "Amazing Credit Cards" } = Astro.props as Props;
       <slot />
     </main>
     <Footer />
+    <div id="graph-bg" class="inset-0 fixed -z-20"></div>
   </body>
 </html>

@@ -4,7 +4,7 @@ import CreditCard from "@/components/CreditCard.astro";
 import BaseLayout from "@/components/BaseLayout.astro";
 import H2 from "@/components/H2.astro";
 
-const banks = [
+const _banks = [
   {
     name: "HDFC Bank",
     image: "/bank1.png",
@@ -90,6 +90,9 @@ const cards = [
     learn: "#",
   },
 ];
+
+import hygraph from "@/js/hygraph";
+const banks = await hygraph("banks");
 ---
 
 <BaseLayout>
@@ -125,12 +128,18 @@ const cards = [
       <H2 title="Top credit card issuers" />
 
       <div
-        class="mt-16 lg:mt-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16"
+        class="mt-16 lg:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-16"
       >
         {
-          banks.map((bank) => (
-            <BankCard name={bank.name} image={bank.image} link={bank.link} />
-          ))
+          banks
+            .reverse()
+            .map((bank) => (
+              <BankCard
+                name={bank.name}
+                image={bank?.logo?.url}
+                link={`/banks/${bank.slug}`}
+              />
+            ))
         }
       </div>
     </div>

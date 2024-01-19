@@ -14,8 +14,8 @@ const {
   apply = "#",
 } = Astro.props as Props;
 
-const numberArray = (n) =>
-  Array.from({ length: parseInt(n, 10) }, (_, index) => index) as Array<Number>;
+const numberArray = (n: number) =>
+  Array.from({ length: n }, (_, index) => index) as Array<Number>;
 ---
 
 <div
@@ -24,8 +24,8 @@ const numberArray = (n) =>
   <img src={image} alt={name} class="h-[180px]" />
 
   <div class="flex items-center gap-2 mt-6">
-    {numberArray(rating).map((n) => <img src="/star-yellow.svg" />)}
-    {numberArray(5 - rating).map((n) => <img src="/star-white.svg" />)}
+    {numberArray(rating).map(() => <img src="/star-yellow.svg" />)}
+    {numberArray(5 - rating).map(() => <img src="/star-white.svg" />)}
   </div>
   <h3 class="lg:text-xl mt-4">{name}</h3>
   <a

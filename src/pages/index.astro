@@ -15,7 +15,7 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
 <BaseLayout {description}>
   <section class="border-y-8 border-black">
     <div
-      class="container mx-auto px-5 py-16 lg:py-32 grid lg:grid-cols-2 gap-12"
+      class="container mx-auto px-5 py-12 lg:py-32 grid lg:grid-cols-2 gap-12"
     >
       <div class="flex flex-col items-start">
         <h1 class="tracking-tighter">
@@ -23,12 +23,12 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
             class="max-lg:hidden"
           /> Card for You
         </h1>
-        <p class="mt-8 max-w-2xl text-lg">
+        <p class="mt-4 lg:mt-8 max-w-2xl lg:text-lg">
           Embark on your financial journey with Amazing Credit Cards - where the
           perfect card tailored to your needs awaits discovery.
         </p>
         <a
-          class="mt-8 bg-yellow-500 py-2 px-8 border-brutal hover:bg-yellow-400 transition-all duration-300 hover:border-brutal-lg"
+          class="mt-4 lg:mt-8 bg-yellow-500 py-2 px-8 border-brutal hover:bg-yellow-400 transition-all duration-300 hover:border-brutal-lg"
           href="#"
         >
           Explore →</a

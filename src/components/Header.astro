@@ -28,12 +28,25 @@ const links = [
 ];
 ---
 
-<header class="bg-yellow-500 border-b-8 border-black z-50">
-  <div class="container mx-auto px-5 py-10 flex items-center justify-between">
+<header class="bg-yellow-500 border-b-8 border-black z-40">
+  <div
+    class="container mx-auto px-5 py-5 lg:py-10 flex items-center justify-between"
+  >
     <a href="/">
-      <img src="/logo.png" alt="Amazing Credit Cards" class="h-28 -mb-20" />
+      <img
+        src="/logo.png"
+        alt="Amazing Credit Cards"
+        class="h-20 lg:h-28 -mb-28 relative max-lg:bottom-2"
+      />
     </a>
-    <nav>
+    <button
+      data-menu-toggler
+      id="hamburger"
+      class="border-brutal-sm px-3 py-1 bg-white text-sm hover:bg-yellow-100 transition-colors duration-300 lg:hidden"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="max-lg:hidden">
       <ul class="flex items-center gap-4">
         {
           links.map((link) => (
@@ -53,3 +66,62 @@ const links = [
     </nav>
   </div>
 </header>
+
+<aside
+  id="aside"
+  class="fixed top-0 -right-[28rem] w-[70%] max-w-md bg-yellow-500 z-50 border-l-8 border-black transition-all duration-500 p-5 lg:p-10 pb-28 flex flex-col h-screen"
+>
+  <div class="flex flex-col flex-1">
+    <div class="flex justify-end">
+      <button
+        id="hamburger"
+        data-menu-toggler
+        class="border-brutal-sm px-3 py-1 bg-white text-sm hover:bg-yellow-100 transition-colors duration-300 lg:hidden"
+      >
+        <i class="fas fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mt-16 flex-1 flex flex-col justify-end">
+      <ul class="flex flex-col gap-8 items-end">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300"
+                target={link.target}
+              >
+                {link.label}
+                {link.icon && <i class={link.icon} />}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<div
+  data-menu-toggler
+  id="backdrop"
+  class="fixed h-screen w-screen bg-black/70 z-40 opacity-0 pointer-events-none"
+>
+</div>
+
+<script>
+  const aside = document.querySelector("#aside") as HTMLDivElement;
+  const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
+  const togglers = document.querySelectorAll(
+    "[data-menu-toggler]"
+  ) as NodeListOf<HTMLButtonElement>;
+
+  togglers.forEach((toggler) =>
+    toggler.addEventListener("click", () => {
+      aside.classList.toggle("right-0");
+      aside.classList.toggle("-right-[28rem]");
+      backdrop.classList.toggle("opacity-0");
+      backdrop.classList.toggle("pointer-events-none");
+    })
+  );
+</script>

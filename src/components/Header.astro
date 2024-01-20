@@ -23,6 +23,7 @@ const links = [
   {
     icon: "fab fa-twitter",
     href: "//x.com/amazingcreditc",
+    target: "_blank",
   },
 ];
 ---
@@ -36,8 +37,15 @@ const links = [
       <ul class="flex items-center gap-4">
         {
           links.map((link) => (
-            <li class="border-brutal-sm px-2 py-1 bg-white">
-              <a href={link.href}>{link.label}</a>
+            <li>
+              <a
+                href={link.href}
+                class="border-brutal-sm px-3 py-1 bg-white text-sm hover:bg-yellow-100 transition-colors duration-300"
+                target={link.target}
+              >
+                {link.label}
+                {link.icon && <i class={link.icon} />}
+              </a>
             </li>
           ))
         }

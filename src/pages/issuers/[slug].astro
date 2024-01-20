@@ -1,18 +1,45 @@
 ---
 import BaseLayout from "@/components/BaseLayout.astro";
-import hygraph from "@/js/hygraph.ts";
+import CreditCard from "@/components/CreditCard.astro";
+import H2 from "@/components/H2.astro";
+import hygraph from "@/js/hygraph";
+import { type Bank, type Card } from "@/js/interfaces";
 
 export async function getStaticPaths() {
   const banks = await hygraph("banks");
   const cards = await hygraph("cards");
   return banks.map((bank) => {
-    const filteredCards = cards.
     return {
       params: { slug: bank.slug },
-      props: { bank },
+      props: { cards, bank },
     };
   });
 }
+
+interface Props {
+  cards: Array<Card>;
+  bank: Bank;
+}
+
+const { cards, bank } = Astro.props as Props;
 ---
 
-<BaseLayout />
+<BaseLayout title={bank.name}>
+  <section class="border-y-8 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
+        {
+          cards.map((card: Card) => (
+            <CreditCard
+              name={card.name}
+              image={card.image.url}
+              apply={card.applyUrl}
+              learn={`/cards/${card.slug}`}
+              rating={card.rating}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

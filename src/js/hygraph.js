@@ -1,5 +1,5 @@
 import { request, gql } from "graphql-request";
-const url = import.meta.env.CONTENT_API as string;
+const url = import.meta.env.CONTENT_API;
 
 const queries = {
   banks: gql`

@@ -7,7 +7,7 @@ import { type Bank, type Card } from "@/js/interfaces";
 const description =
   "Discover the ideal credit card for your financial goals. Explore our curated selection, compare rewards, rates, and benefits, and apply online. Start your journey to smarter spending today.";
 
-import hygraph from "@/js/hygraph.ts";
+import hygraph from "@/js/hygraph";
 const banks = (await hygraph("banks")) as Array<Bank>;
 const featuredCards = (await hygraph("cards")) as Array<Card>;
 ---

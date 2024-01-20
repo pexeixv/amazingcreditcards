@@ -2,7 +2,7 @@
 import BaseLayout from "@/components/BaseLayout.astro";
 import H2 from "@/components/H2.astro";
 import BankCard from "@/components/BankCard.astro";
-import hygraph from "@/js/hygraph.ts";
+import hygraph from "@/js/hygraph";
 import { type Bank } from "@/js/interfaces";
 const banks = (await hygraph("banks")) as Array<Bank>;
 ---

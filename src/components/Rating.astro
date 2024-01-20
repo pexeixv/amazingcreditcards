@@ -1,0 +1,13 @@
+---
+import { numberArray } from "@/js/utils";
+interface Props {
+  rating: number;
+}
+const { rating = 3 } = Astro.props as Props;
+---
+
+<div class="flex items-center gap-2 mt-6">
+  <span class="sr-only">{rating}/5 star rating</span>
+  {numberArray(rating).map(() => <img src="/star-yellow.svg" alt="" />)}
+  {numberArray(5 - rating).map(() => <img src="/star-white.svg" alt="" />)}
+</div>

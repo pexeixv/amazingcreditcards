@@ -5,7 +5,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        lexend: ['"Lexend Giga Variable"', ...defaultTheme.fontFamily.sans],
+        "lexend-giga": [
+          '"Lexend Giga Variable"',
+          ...defaultTheme.fontFamily.sans,
+        ],
+        lexend: ['"Lexend Variable"', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         "b-2": "0 0.25rem 0 black;",
@@ -15,5 +19,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

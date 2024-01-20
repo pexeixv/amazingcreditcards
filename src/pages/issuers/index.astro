@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import H2 from "@/components/H2.astro";
+import BankCard from "@/components/BankCard.astro";
+import hygraph from "@/js/hygraph.ts";
+import { type Bank } from "@/js/interfaces";
+const banks = (await hygraph("banks")) as Array<Bank>;
+---
+
+<BaseLayout title="Card Issuers">
+  <section class="border-y-8 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <H2 title="Top credit card issuers" />
+
+      <div
+        class="mt-16 lg:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-16"
+      >
+        {
+          banks
+            .reverse()
+            .map((bank: Bank) => (
+              <BankCard
+                name={bank.name}
+                image={bank?.logo?.url}
+                link={`/issuers/${bank.slug}`}
+              />
+            ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

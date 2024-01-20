@@ -1,0 +1,18 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import hygraph from "@/js/hygraph.ts";
+
+export async function getStaticPaths() {
+  const banks = await hygraph("banks");
+  const cards = await hygraph("cards");
+  return banks.map((bank) => {
+    const filteredCards = cards.
+    return {
+      params: { slug: bank.slug },
+      props: { bank },
+    };
+  });
+}
+---
+
+<BaseLayout />

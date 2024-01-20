@@ -3,44 +3,16 @@ import BankCard from "@/components/BankCard.astro";
 import CreditCard from "@/components/CreditCard.astro";
 import BaseLayout from "@/components/BaseLayout.astro";
 import H2 from "@/components/H2.astro";
+import { type Bank, type Card } from "@/js/interfaces";
+const description =
+  "Discover the ideal credit card for your financial goals. Explore our curated selection, compare rewards, rates, and benefits, and apply online. Start your journey to smarter spending today.";
 
-const cards = [
-  {
-    name: "Flipkart Axis Bank Credit Card",
-    image: "/card1.png",
-    rating: 5,
-    apply: "#",
-    learn: "#",
-  },
-  {
-    name: "HDFC Bank Millennia Credit Card",
-    image: "/card2.png",
-    rating: 4,
-    apply: "#",
-    learn: "#",
-  },
-  {
-    name: "SBI SimplyCLICK Credit Card",
-    image: "/card3.png",
-    rating: 5,
-    apply: "#",
-    learn: "#",
-  },
-];
-
-interface Bank {
-  name: string;
-  slug: string;
-  logo: {
-    url: string;
-  };
-}
-
-import hygraph from "@/js/hygraph";
-const banks = await hygraph("banks");
+import hygraph from "@/js/hygraph.ts";
+const banks = (await hygraph("banks")) as Array<Bank>;
+const featuredCards = (await hygraph("cards")) as Array<Card>;
 ---
 
-<BaseLayout>
+<BaseLayout {description}>
   <section class="border-y-8 border-black">
     <div
       class="container mx-auto px-5 py-16 lg:py-32 grid lg:grid-cols-2 gap-12"
@@ -82,7 +54,7 @@ const banks = await hygraph("banks");
               <BankCard
                 name={bank.name}
                 image={bank?.logo?.url}
-                link={`/banks/${bank.slug}`}
+                link={`/issuers/${bank.slug}`}
               />
             ))
         }
@@ -90,25 +62,27 @@ const banks = await hygraph("banks");
     </div>
   </section>
 
-  <section class="border-y-8 border-black">
-    <div class="container mx-auto px-5 py-16 lg:py-20">
-      <H2 title="Most popular credit cards" />
+  {
+    featuredCards && (
+      <section class="border-y-8 border-black">
+        <div class="container mx-auto px-5 py-16 lg:py-20">
+          <H2 title="Most popular credit cards" />
 
-      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
-        {
-          cards.map((card) => (
-            <CreditCard
-              name={card.name}
-              image={card.image}
-              apply={card.apply}
-              learn={card.learn}
-              rating={card.rating}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
+          <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
+            {featuredCards.map((card: Card) => (
+              <CreditCard
+                name={card.name}
+                image={card.image.url}
+                apply={card.applyUrl}
+                learn={`/cards/${card.slug}`}
+                rating={card.rating}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section>
     <h2 class="sr-only">FAQ</h2>

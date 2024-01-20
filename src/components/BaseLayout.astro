@@ -3,14 +3,16 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import TailwindSizeIndicator from "@/components/TailwindSizeIndicator.astro";
 import "@fontsource-variable/lexend-giga";
+import "@fontsource-variable/lexend";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/tailwind.css";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Amazing Credit Cards" } = Astro.props as Props;
+const { title = "Amazing Credit Cards", description } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -19,9 +21,10 @@ const { title = "Amazing Credit Cards" } = Astro.props as Props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="shortcut icon" href="/fav.png" type="image/x-icon" />
   </head>
-  <body class="min-h-screen flex flex-col overflow-x-hidden font-lexend">
+  <body class="min-h-screen flex flex-col overflow-x-hidden font-lexend-giga">
     <Header />
     <TailwindSizeIndicator />
     <main class="flex-1">

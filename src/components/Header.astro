@@ -1,3 +1,47 @@
-<header class="bg-yellow-500 border-b-8 border-black">
-  <div class="container mx-auto px-5 py-10">header</div>
+---
+const links = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Categories",
+    href: "/",
+  },
+  {
+    label: "Issuers",
+    href: "/issuers",
+  },
+  {
+    label: "Blog",
+    href: "/",
+  },
+  {
+    label: "About",
+    href: "/",
+  },
+  {
+    icon: "fab fa-twitter",
+    href: "//x.com/amazingcreditc",
+  },
+];
+---
+
+<header class="bg-yellow-500 border-b-8 border-black z-50">
+  <div class="container mx-auto px-5 py-10 flex items-center justify-between">
+    <a href="/">
+      <img src="/logo.png" alt="Amazing Credit Cards" class="h-28 -mb-20" />
+    </a>
+    <nav>
+      <ul class="flex items-center gap-4">
+        {
+          links.map((link) => (
+            <li class="border-brutal-sm px-2 py-1 bg-white">
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </header>

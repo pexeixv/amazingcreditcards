@@ -1,0 +1,31 @@
+---
+import CreditCard from "@/components/CreditCard.astro";
+import BaseLayout from "@/components/BaseLayout.astro";
+import H2 from "@/components/H2.astro";
+import { type Card } from "@/js/interfaces";
+
+import hygraph from "@/js/hygraph.ts";
+const cards = (await hygraph("cards")) as Array<Card>;
+---
+
+<BaseLayout title="Credit Cards">
+  <section class="border-y-8 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <H2 title="Most popular credit cards" />
+
+      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
+        {
+          cards.map((card: Card) => (
+            <CreditCard
+              name={card.name}
+              image={card.image.url}
+              apply={card.applyUrl}
+              learn={`/cards/${card.slug}`}
+              rating={card.rating}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

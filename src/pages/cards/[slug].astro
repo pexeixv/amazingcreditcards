@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import H2 from "@/components/H2.astro";
+import Rating from "@/components/Rating.astro";
+import hygraph from "@/js/hygraph.ts";
+import { type Card } from "@/js/interfaces";
+export async function getStaticPaths() {
+  const cards = (await hygraph("cards")) as Array<Card>;
+  return cards.map((card) => {
+    return {
+      params: { slug: card.slug },
+      props: { card },
+    };
+  });
+}
+
+const { card } = Astro.props;
+
+const { name, slug, applyUrl, rating, description, content, image } = card;
+---
+
+<BaseLayout title={name} {description}>
+  <section>
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center"
+    >
+      <H2 title={name} />
+
+      <div class="grid lg:grid-cols-3 gap-12 mt-16 max-w-6xl">
+        <div
+          class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
+        >
+          <img
+            src={image.url}
+            alt={name}
+            class="mx-auto w-full max-w-[300px]"
+          />
+          <Rating {rating} />
+          <a
+            class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 hover:bg-yellow-400 w-fit"
+            href={applyUrl}
+          >
+            Apply now</a
+          >
+        </div>
+        {
+          description && (
+            <div class="lg:col-span-2 border-brutal-lg p-6 lg:p-8 flex flex-col justify-center bg-white">
+              {description}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    content?.html && (
+      <section>
+        <div class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend">
+          <Fragment set:html={content?.html} />
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

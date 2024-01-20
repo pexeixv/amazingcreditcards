@@ -1,4 +1,6 @@
 ---
+import { numberArray } from "@/js/utils.ts";
+import Rating from "./Rating.astro";
 interface Props {
   name?: string;
   image: string;
@@ -13,9 +15,6 @@ const {
   learn = "#",
   apply = "#",
 } = Astro.props as Props;
-
-const numberArray = (n: number) =>
-  Array.from({ length: n }, (_, index) => index) as Array<Number>;
 ---
 
 <div
@@ -23,10 +22,8 @@ const numberArray = (n: number) =>
 >
   <img src={image} alt={name} class="h-[180px]" />
 
-  <div class="flex items-center gap-2 mt-6">
-    {numberArray(rating).map(() => <img src="/star-yellow.svg" />)}
-    {numberArray(5 - rating).map(() => <img src="/star-white.svg" />)}
-  </div>
+  <Rating {rating} />
+
   <h3 class="lg:text-xl mt-4">{name}</h3>
   <a
     class="mt-8 bg-white py-1 px-4 border-brutal transition-all duration-300 w-full group-hover:bg-yellow-500 group-hover:hover:bg-yellow-400"

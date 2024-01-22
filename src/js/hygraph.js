@@ -40,6 +40,11 @@ const queries = {
         image {
           url
         }
+        bank {
+          ... on Bank {
+            name
+          }
+        }
       }
     }
   `,

@@ -9,9 +9,10 @@ export async function getStaticPaths() {
   const banks = await hygraph("banks");
   const cards = await hygraph("cards");
   return banks.map((bank) => {
+    const filteredCards = cards.filter((card) => card.bank.name === bank.name);
     return {
       params: { slug: bank.slug },
-      props: { cards, bank },
+      props: { cards: filteredCards, bank },
     };
   });
 }

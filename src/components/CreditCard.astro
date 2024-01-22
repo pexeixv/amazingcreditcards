@@ -1,5 +1,4 @@
 ---
-import { numberArray } from "@/js/utils.ts";
 import Rating from "./Rating.astro";
 interface Props {
   name?: string;
@@ -18,7 +17,7 @@ const {
 ---
 
 <div
-  class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center hover:bg-yellow-500 transition-colors duration-300 group bg-white"
+  class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center transition-all relative bottom-0 hover:bottom-1 duration-300 bg-white"
 >
   <img src={image} alt={name} class="h-[180px]" />
 
@@ -26,13 +25,13 @@ const {
 
   <h3 class="lg:text-xl mt-4">{name}</h3>
   <a
-    class="mt-8 bg-white py-1 px-4 border-brutal transition-all duration-300 w-full group-hover:bg-yellow-500 group-hover:hover:bg-yellow-400"
+    class="mt-8 bg-white py-1 px-4 border-brutal transition-all duration-300 w-full hover:bg-yellow-500/30"
     href={learn}
   >
     Learn more</a
   >
   <a
-    class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 w-full group-hover:bg-white group-hover:hover:bg-white/80"
+    class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 w-full hover:bg-yellow-500/80"
     href={apply}
   >
     Apply now</a

@@ -13,7 +13,7 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
 ---
 
 <BaseLayout {description}>
-  <section class="border-y-8 border-black">
+  <section class="border-b-4 border-black">
     <div
       class="container mx-auto px-5 py-12 lg:py-32 grid lg:grid-cols-2 gap-12"
     >
@@ -40,7 +40,7 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
     </div>
   </section>
 
-  <section class="border-y-8 border-black">
+  <section class="border-y-6 border-black">
     <div class="container mx-auto px-5 py-16 lg:py-20">
       <H2 title="Top credit card issuers" />
 
@@ -64,7 +64,7 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
 
   {
     featuredCards && (
-      <section class="border-y-8 border-black">
+      <section class="border-y-6 border-black">
         <div class="container mx-auto px-5 py-16 lg:py-20">
           <H2 title="Most popular credit cards" />
 
@@ -86,14 +86,14 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
 
   <section>
     <h2 class="sr-only">FAQ</h2>
-    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+    <div class="grid lg:grid-cols-2 border-y-6 border-black">
       <div
-        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-8 border-black max-lg:border-b-8"
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-6 border-black max-lg:border-b-8"
       >
         <h3>What Is A Credit Card?</h3>
       </div>
       <div
-        class="bg-white p-12 lg:p-20 lg:border-l-8 border-black text-justify max-lg:border-t-8"
+        class="bg-white p-12 lg:p-20 lg:border-l-6 border-black text-justify max-lg:border-t-8"
       >
         <p>
           A credit card is a financial instrument that has a pre-loaded balance
@@ -108,14 +108,14 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
       </div>
     </div>
 
-    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+    <div class="grid lg:grid-cols-2 border-y-6 border-black">
       <div
-        class="bg-yellow-500 p-12 lg:p-20 lg:border-l-8 border-black max-lg:border-b-8"
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-l-6 border-black max-lg:border-b-8"
       >
         <h3>Why Get A Credit Card?</h3>
       </div>
       <div
-        class="bg-white p-12 lg:p-20 lg:border-r-8 border-black text-justify lg:row-start-1 max-lg:border-t-8"
+        class="bg-white p-12 lg:p-20 lg:border-r-6 border-black text-justify lg:row-start-1 max-lg:border-t-8"
       >
         <p>
           Let's start from the beginning: Why should you get your first credit
@@ -127,14 +127,14 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
       </div>
     </div>
 
-    <div class="grid lg:grid-cols-2 border-y-8 border-black">
+    <div class="grid lg:grid-cols-2 border-y-6 border-black">
       <div
-        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-8 border-black max-lg:border-b-8"
+        class="bg-yellow-500 p-12 lg:p-20 lg:border-r-6 border-black max-lg:border-b-8"
       >
         <h3>How does a Credit Card work?</h3>
       </div>
       <div
-        class="bg-white p-12 lg:p-20 lg:border-l-8 border-black text-justify max-lg:border-t-8"
+        class="bg-white p-12 lg:p-20 lg:border-l-6 border-black text-justify max-lg:border-t-8"
       >
         <p>
           A credit card allows delayed payment for purchases, essentially

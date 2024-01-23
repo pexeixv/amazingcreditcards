@@ -26,13 +26,13 @@
   }
 
   .border-brutal-sm {
-    @apply rounded-lg border-2 border-black shadow-b-2;
+    @apply rounded-lg border-2 border-black lg:shadow-b-2 shadow-b-1;
   }
   .border-brutal {
-    @apply rounded-lg border-4 border-black shadow-b-4;
+    @apply rounded-lg border-4 border-black lg:shadow-b-4 shadow-b-2;
   }
   .border-brutal-lg {
-    @apply rounded-lg border-4 border-black shadow-b-6;
+    @apply rounded-lg border-4 border-black lg:shadow-b-6 shadow-b-3;
   }
 
   /* For debugging */

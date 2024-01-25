@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { card } = Astro.props;
 
-const { name, slug, applyUrl, rating, description, content, image } = card;
+const { name, applyUrl, rating, description, content, image } = card;
 ---
 
 <BaseLayout title={name} {description}>

@@ -18,4 +18,5 @@ export interface Card {
   image: {
     url: string;
   };
+  bank?: Bank;
 }

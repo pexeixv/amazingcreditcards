@@ -37,4 +37,4 @@ jobs:
           distDirectory=dist
 
           # Use FTP to upload files with ssl:verify-certificate set to no
-          lftp -u "$ftpUsername,$ftpPassword" -e "set ssl:verify-certificate no; mirror -R $distDirectory /public_html; bye" $ftpHost
+          lftp -u "$ftpUsername,$ftpPassword" -e "set ssl:verify-certificate no; mirror -R $distDirectory /; bye" $ftpHost

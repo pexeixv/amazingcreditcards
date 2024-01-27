@@ -21,17 +21,6 @@ jobs:
         with:
           node-version: 18
 
-      # Cache pnpm dependencies
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.pnpm-store
-            ~/.pnpm
-          key: pnpm-${{ runner.os }}-${{ hashFiles('**/*.lock') }}
-        restore-keys: |
-          pnpm-${{ runner.os }}-
-
       - run: npm install -g pnpm
       - run: pnpm install
 

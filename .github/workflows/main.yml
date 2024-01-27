@@ -22,18 +22,7 @@ jobs:
       - name: Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-
-      # Cache pnpm dependencies
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.pnpm-store
-            ~/.pnpm
-          key: pnpm-${{ runner.os }}-${{ hashFiles('**/*.lock') }}
-        restore-keys: |
-          pnpm-${{ runner.os }}-
+          node-version: 14
 
       - run: npm i -g pnpm
       - run: pnpm i

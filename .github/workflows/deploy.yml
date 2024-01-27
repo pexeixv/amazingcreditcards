@@ -35,11 +35,11 @@ jobs:
         restore-keys: |
           pnpm-${{ runner.os }}-
 
-      - run: npm install -g pnpm
-      - run: pnpm install
+      - run: npm i -g pnpm
+      - run: pnpm i
 
       - name: Build
-        run: pnpm run build
+        run: pnpm build
 
       - name: Initialize git-ftp
         run: git ftp init --user $FTP_USERNAME --passwd $FTP_PASSWORD --url ftp://${FTP_HOST}/path/to/destination/

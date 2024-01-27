@@ -35,7 +35,7 @@ jobs:
           ftp -n $FTP_HOST <<END_SCRIPT
           quote USER $FTP_USERNAME
           quote PASS $FTP_PASSWORD
-          cd /home/amazingc/public_html
+          cd /
           mput -r *
           quit
           END_SCRIPT

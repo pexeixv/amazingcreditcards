@@ -9,6 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      CONTENT_API: ${{ secrets.CONTENT_API }}
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2

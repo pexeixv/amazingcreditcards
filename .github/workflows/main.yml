@@ -1,0 +1,48 @@
+name: Deploy on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      CONTENT_API: ${{ secrets.CONTENT_API }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_HOST: ${{ secrets.FTP_HOST }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js and PNPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Cache pnpm dependencies
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.pnpm-store
+            ~/.pnpm
+          key: pnpm-${{ runner.os }}-${{ hashFiles('**/*.lock') }}
+        restore-keys: |
+          pnpm-${{ runner.os }}-
+
+      - run: npm i -g pnpm
+      - run: pnpm i
+
+      - name: Build
+        run: pnpm build
+
+      - name: Initialize git-ftp
+        run: git ftp init --user $FTP_USERNAME --passwd $FTP_PASSWORD --url ftp://${FTP_HOST}/path/to/destination/
+
+      - name: Deploy to Hosting with git-ftp
+        run: git ftp push --all

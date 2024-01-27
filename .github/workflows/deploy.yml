@@ -13,25 +13,28 @@ jobs:
       CONTENT_API: ${{ secrets.CONTENT_API }}
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js and PNPM
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
-    - run: npm install -g pnpm
-    - run: pnpm install
+      - name: Setup Node.js and PNPM
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install -g pnpm
+      - run: pnpm install
 
-    - name: Build
-      run: pnpm run build
+      - name: Install lftp
+        run: sudo apt-get install lftp
 
-    - name: Deploy to Hosting
-      run: |
-        ftpUsername=${{ secrets.FTP_USERNAME }}
-        ftpPassword=${{ secrets.FTP_PASSWORD }}
-        ftpHost=${{ secrets.FTP_HOST }}
-        distDirectory=dist
+      - name: Build
+        run: pnpm run build
 
-        # Use FTP to upload files
-        lftp -u "$ftpUsername,$ftpPassword" -e "mirror -R $distDirectory /public_html; bye" $ftpHost
+      - name: Deploy to Hosting
+        run: |
+          ftpUsername=${{ secrets.FTP_USERNAME }}
+          ftpPassword=${{ secrets.FTP_PASSWORD }}
+          ftpHost=${{ secrets.FTP_HOST }}
+          distDirectory=dist
+
+          # Use FTP to upload files
+          lftp -u "$ftpUsername,$ftpPassword" -e "mirror -R $distDirectory /public_html; bye" $ftpHost

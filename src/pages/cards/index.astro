@@ -17,11 +17,11 @@ const cards = (await hygraph("cards")) as Array<Card>;
         {
           cards.map((card: Card) => (
             <CreditCard
-              name={card.name}
-              image={card.image.url}
-              apply={card.applyUrl}
-              learn={`/cards/${card.slug}`}
-              rating={card.rating}
+              name={card?.name}
+              image={card?.image?.url}
+              apply={card?.applyUrl}
+              learn={`/cards/${card?.slug}`}
+              rating={card?.rating}
             />
           ))
         }

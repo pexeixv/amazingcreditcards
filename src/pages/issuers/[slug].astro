@@ -34,10 +34,10 @@ const { cards, bank } = Astro.props as Props;
           cards.map((card: Card) => (
             <CreditCard
               name={card.name}
-              image={card.image.url}
-              apply={card.applyUrl}
-              learn={`/cards/${card.slug}`}
-              rating={card.rating}
+              image={card?.image?.url}
+              apply={card?.applyUrl}
+              learn={`/cards/${card?.slug}`}
+              rating={card?.rating}
             />
           ))
         }

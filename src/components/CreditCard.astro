@@ -2,14 +2,14 @@
 import Rating from "./Rating.astro";
 interface Props {
   name?: string;
-  image: string;
+  image?: string;
   rating: number;
   learn?: string;
   apply?: string;
 }
 const {
   name = "Bank Name",
-  image,
+  image = "https://media.graphassets.com/k2skyhWGTSq2yUo1hDqf",
   rating,
   learn = "#",
   apply = "#",

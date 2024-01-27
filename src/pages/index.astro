@@ -52,9 +52,9 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
             .reverse()
             .map((bank: Bank) => (
               <BankCard
-                name={bank.name}
+                name={bank?.name}
                 image={bank?.logo?.url}
-                link={`/issuers/${bank.slug}`}
+                link={`/issuers/${bank?.slug}`}
               />
             ))
         }
@@ -71,11 +71,11 @@ const featuredCards = (await hygraph("cards")) as Array<Card>;
           <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
             {featuredCards.map((card: Card) => (
               <CreditCard
-                name={card.name}
-                image={card.image.url}
-                apply={card.applyUrl}
-                learn={`/cards/${card.slug}`}
-                rating={card.rating}
+                name={card?.name}
+                image={card?.image?.url}
+                apply={card?.applyUrl}
+                learn={`/cards/${card?.slug}`}
+                rating={card?.rating}
               />
             ))}
           </div>

@@ -16,7 +16,14 @@ export async function getStaticPaths() {
 
 const { card } = Astro.props;
 
-const { name, applyUrl, rating, description, content, image } = card;
+const {
+  name,
+  applyUrl,
+  rating,
+  description,
+  content,
+  image = { url: "https://media.graphassets.com/k2skyhWGTSq2yUo1hDqf" },
+} = card;
 ---
 
 <BaseLayout title={name} {description}>
@@ -31,7 +38,7 @@ const { name, applyUrl, rating, description, content, image } = card;
           class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
         >
           <img
-            src={image.url}
+            src={image?.url}
             alt={name}
             class="mx-auto w-full max-w-[300px]"
           />

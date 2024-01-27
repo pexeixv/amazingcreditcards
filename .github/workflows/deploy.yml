@@ -36,5 +36,5 @@ jobs:
           ftpHost=${{ secrets.FTP_HOST }}
           distDirectory=dist
 
-          # Use FTP to upload files with --no-ssl option
-          lftp --no-ssl -u "$ftpUsername,$ftpPassword" -e "mirror -R $distDirectory /public_html; bye" $ftpHost
+          # Use FTP to upload files with ssl:verify-certificate set to no
+          lftp -u "$ftpUsername,$ftpPassword" -e "set ssl:verify-certificate no; mirror -R $distDirectory /public_html; bye" $ftpHost

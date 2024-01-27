@@ -30,8 +30,12 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Initialize git-ftp
-        run: git ftp init --user $FTP_USERNAME --passwd $FTP_PASSWORD --url ftp://${FTP_HOST}/home/amazingc/public_html/
-
-      - name: Deploy to Hosting with git-ftp
-        run: git ftp push --all
+      - name: Upload to FTP
+        run: |
+          ftp -n $FTP_HOST <<END_SCRIPT
+          quote USER $FTP_USERNAME
+          quote PASS $FTP_PASSWORD
+          cd /home/amazingc/public_html
+          mput -r *
+          quit
+          END_SCRIPT

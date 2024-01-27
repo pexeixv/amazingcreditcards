@@ -11,6 +11,9 @@ jobs:
 
     env:
       CONTENT_API: ${{ secrets.CONTENT_API }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_HOST: ${{ secrets.FTP_HOST }}
 
     steps:
       - name: Checkout Repository
@@ -20,21 +23,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+
+      # Cache pnpm dependencies
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.pnpm-store
+            ~/.pnpm
+          key: pnpm-${{ runner.os }}-${{ hashFiles('**/*.lock') }}
+        restore-keys: |
+          pnpm-${{ runner.os }}-
+
       - run: npm install -g pnpm
       - run: pnpm install
 
       - name: Build
         run: pnpm run build
 
+      - name: Initialize git-ftp
+        run: git ftp init --user $FTP_USERNAME --passwd $FTP_PASSWORD --url ftp://${FTP_HOST}/path/to/destination/
+
       - name: Deploy to Hosting with git-ftp
-        run: |
-          ftpUsername=${{ secrets.FTP_USERNAME }}
-          ftpPassword=${{ secrets.FTP_PASSWORD }}
-          ftpHost=${{ secrets.FTP_HOST }}
-          distDirectory=dist
-
-          # Configure git-ftp with FTP credentials
-          git config git-ftp.url "ftp://${ftpUsername}:${ftpPassword}@${ftpHost}/path/to/destination/"
-
-          # Use git-ftp to push changes
-          git ftp push --all
+        run: git ftp push --all

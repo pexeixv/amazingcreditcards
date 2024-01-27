@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: 18
     - run: npm install -g pnpm
-    - run: pnpm install --frozen-lockfile
+    - run: pnpm install
 
     - name: Build
       run: pnpm run build

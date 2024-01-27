@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js and PNPM
       uses: actions/setup-node@v4
       with:
-        node-version: 14
+        node-version: 18
     - run: npm install -g pnpm
     - run: pnpm install --frozen-lockfile
 

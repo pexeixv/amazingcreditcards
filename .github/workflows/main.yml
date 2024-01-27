@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 16
 
       - run: npm i -g pnpm
       - run: pnpm i

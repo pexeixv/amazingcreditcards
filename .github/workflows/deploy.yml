@@ -23,18 +23,18 @@ jobs:
       - run: npm install -g pnpm
       - run: pnpm install
 
-      - name: Install lftp
-        run: sudo apt-get install lftp
-
       - name: Build
         run: pnpm run build
 
-      - name: Deploy to Hosting
+      - name: Deploy to Hosting with git-ftp
         run: |
           ftpUsername=${{ secrets.FTP_USERNAME }}
           ftpPassword=${{ secrets.FTP_PASSWORD }}
           ftpHost=${{ secrets.FTP_HOST }}
           distDirectory=dist
 
-          # Use FTP to upload files with ssl:verify-certificate set to no
-          lftp -u "$ftpUsername,$ftpPassword" -e "set ssl:verify-certificate no; mirror -R $distDirectory /; bye" $ftpHost
+          # Configure git-ftp with FTP credentials
+          git config git-ftp.url "ftp://${ftpUsername}:${ftpPassword}@${ftpHost}/path/to/destination/"
+
+          # Use git-ftp to push changes
+          git ftp push --all

@@ -4,6 +4,7 @@ import H2 from "@/components/H2.astro";
 import Rating from "@/components/Rating.astro";
 import hygraph from "@/js/hygraph";
 import { type Card } from "@/js/interfaces";
+const defaultCard = "https://media.graphassets.com/k2skyhWGTSq2yUo1hDqf";
 export async function getStaticPaths() {
   const cards = (await hygraph("cards")) as Array<Card>;
   return cards.map((card) => {
@@ -22,11 +23,12 @@ const {
   rating,
   description,
   content,
-  image = { url: "https://media.graphassets.com/k2skyhWGTSq2yUo1hDqf" },
+  image = { url: defaultCard },
+  ogImage,
 } = card;
 ---
 
-<BaseLayout title={name} {description}>
+<BaseLayout title={name} {description} image={ogImage.url}>
   <section>
     <div
       class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center"
@@ -38,7 +40,7 @@ const {
           class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
         >
           <img
-            src={image?.url}
+            src={image?.url || defaultCard}
             alt={name}
             class="mx-auto w-full max-w-[300px]"
           />

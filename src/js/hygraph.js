@@ -10,6 +10,9 @@ const queries = {
         logo {
           url
         }
+        ogImage {
+          url
+        }
       }
     }
   `,
@@ -38,6 +41,9 @@ const queries = {
           html
         }
         image {
+          url
+        }
+        ogImage {
           url
         }
         bank {

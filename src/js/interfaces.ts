@@ -4,6 +4,9 @@ export interface Bank {
   logo: {
     url: string;
   };
+  ogImage: {
+    url: string;
+  };
 }
 
 export interface Card {
@@ -17,6 +20,9 @@ export interface Card {
   };
   image?: {
     url: string;
+  };
+  ogImage?: {
+    url?: string;
   };
   bank?: Bank;
 }

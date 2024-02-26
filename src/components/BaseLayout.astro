@@ -1,4 +1,5 @@
 ---
+import { SEO } from "astro-seo";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import TailwindSizeIndicator from "@/components/TailwindSizeIndicator.astro";
@@ -10,9 +11,14 @@ import "@/tailwind.css";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
-const { title = "Amazing Credit Cards", description } = Astro.props as Props;
+const {
+  title = "Amazing Credit Cards",
+  description = "Discover the ideal credit card for your financial goals. Explore our curated selection, compare rewards, rates, and benefits, and apply online. Start your journey to smarter spending today.",
+  image = "/preview.jpg",
+} = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -20,8 +26,18 @@ const { title = "Amazing Credit Cards", description } = Astro.props as Props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <SEO
+      {title}
+      {description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image,
+          url: `https://amazingcreditcards.in${Astro.url.pathname}`,
+        },
+      }}
+    />
     <link rel="shortcut icon" href="/fav.png" type="image/x-icon" />
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>

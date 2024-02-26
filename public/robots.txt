@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /*.html
-
+Allow: *
 Sitemap: https://amazingcreditcards.in/sitemap-index.xml

@@ -7,6 +7,7 @@ const queries = {
       banks(where: { draft: false }, first: 30) {
         name
         slug
+        description
         logo {
           url
         }

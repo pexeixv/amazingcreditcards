@@ -1,6 +1,7 @@
 export interface Bank {
   name: string;
   slug: string;
+  description: string;
   logo: {
     url: string;
   };

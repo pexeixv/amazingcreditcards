@@ -28,8 +28,25 @@ const { cards, bank } = Astro.props as Props;
 
 <BaseLayout title={bank.name} image={bank?.ogImage?.url}>
   <section class="border-y-6 border-black">
+    <div
+      class="container mx-auto px-5 py-16 lg:py-20 grid lg:grid-cols-2 place-items-center gap-8"
+    >
+      <div
+        class="w-fit border-4 border-black rounded-lg flex flex-col gap-4 p-2 lg:p-4 bg-white max-w-3xl justify-center"
+      >
+        <img src={bank.logo.url} alt={bank.name} class="h-[50px]" />
+        <h2 class="text-center">
+          {bank.name}
+        </h2>
+      </div>
+      <div class="mx-auto bg-white border-brutal-lg py-10 px-10">
+        {bank.description}
+      </div>
+    </div>
+  </section>
+  <section>
     <div class="container mx-auto px-5 py-16 lg:py-20">
-      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-12 lg:gap-16">
+      <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
         {
           cards.map((card: Card) => (
             <CreditCard
@@ -42,6 +59,11 @@ const { cards, bank } = Astro.props as Props;
           ))
         }
       </div>
+      {
+        !cards.length && (
+          <p class="text-center">No cards to show for this issuer.</p>
+        )
+      }
     </div>
   </section>
 </BaseLayout>

@@ -8,6 +8,9 @@ export interface Bank {
   ogImage: {
     url: string;
   };
+  shortLogo: {
+    url: string;
+  };
 }
 
 export interface Card {

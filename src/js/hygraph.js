@@ -7,6 +7,9 @@ const queries = {
       categories(where: { draft: false }, first: 15) {
         name
         slug
+        emoji {
+          url
+        }
       }
     }
   `,
@@ -20,6 +23,9 @@ const queries = {
           url
         }
         ogImage {
+          url
+        }
+        shortLogo {
           url
         }
       }

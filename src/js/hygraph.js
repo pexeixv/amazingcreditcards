@@ -2,6 +2,14 @@ import { request, gql } from "graphql-request";
 const url = import.meta.env.CONTENT_API;
 
 const queries = {
+  categories: gql`
+    query Categories {
+      categories(where: { draft: false }, first: 15) {
+        name
+        slug
+      }
+    }
+  `,
   banks: gql`
     query Banks {
       banks(where: { draft: false }, first: 30) {

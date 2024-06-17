@@ -7,6 +7,10 @@ import "@fontsource-variable/lexend-giga";
 import "@fontsource-variable/lexend";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/tailwind.css";
+import hygraph from "@/js/hygraph";
+import { type Bank } from "@/js/interfaces";
+const banks = (await hygraph("banks")) as Array<Bank>;
+const categories = (await hygraph("categories")) as Array<Bank>;
 
 interface Props {
   title?: string;
@@ -42,7 +46,7 @@ const {
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body class="min-h-screen flex flex-col overflow-x-hidden font-lexend-giga">
-    <Header />
+    <Header {banks} {categories} />
     <TailwindSizeIndicator />
     <main class="flex-1">
       <slot />

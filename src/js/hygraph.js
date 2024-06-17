@@ -31,7 +31,7 @@ const queries = {
   `,
   cards: gql`
     query Cards {
-      cards(where: { draft: false }) {
+      cards(where: { draft: false }, first: 9999) {
         name
         slug
         applyUrl

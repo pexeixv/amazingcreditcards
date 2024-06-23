@@ -11,6 +11,7 @@ export interface Bank {
   shortLogo: {
     url: string;
   };
+  cards: Array<Card>;
 }
 
 export interface Card {
@@ -29,4 +30,19 @@ export interface Card {
     url?: string;
   };
   bank?: Bank;
+}
+
+export interface Category {
+  name: string;
+  slug: string;
+  emoji?: {
+    url: string;
+  };
+  image?: {
+    url: string;
+  };
+  ogImage?: {
+    url: string;
+  };
+  card_category?: Array<Card>;
 }

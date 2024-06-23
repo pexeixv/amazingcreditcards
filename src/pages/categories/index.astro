@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import H2 from "@/components/H2.astro";
+import CategoryCard from "@/components/CategoryCard.astro";
+import hygraph from "@/js/hygraph";
+import { type Category } from "@/js/interfaces";
+const categories = (await hygraph("categories")) as Array<Category>;
+---
+
+<BaseLayout title="Card Categories">
+  <section class="border-t-6 border-black">
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <H2 title="Credit card categories" />
+
+      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-y-8 gap-x-4 lg:gap-16">
+        {
+          categories.map((category) => (
+            <CategoryCard
+              name={category.name}
+              image={category.image}
+              emoji={category.emoji}
+              slug={category.slug}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

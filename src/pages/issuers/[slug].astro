@@ -5,17 +5,17 @@ import hygraph from "@/js/hygraph";
 import { type Bank, type Card } from "@/js/interfaces";
 
 export async function getStaticPaths() {
-  const banks = await hygraph("banks");
-  const cards = await hygraph("cards");
-  return banks.map((bank: Bank) => {
-    const filteredCards = cards.filter(
-      (card: Card) => card.bank.name === bank.name
-    );
-    return {
-      params: { slug: bank.slug },
-      props: { cards: filteredCards, bank },
-    };
-  });
+  const banks = (await hygraph("banksWithCards", "banks")) as Array<Bank>;
+
+  return banks.map((bank: Bank) => ({
+    params: {
+      slug: bank.slug,
+    },
+    props: {
+      cards: bank.cards,
+      bank,
+    },
+  }));
 }
 
 interface Props {
@@ -32,9 +32,9 @@ const { cards, bank } = Astro.props as Props;
       class="container mx-auto px-5 py-16 lg:py-20 grid lg:grid-cols-2 place-items-center gap-8"
     >
       <div
-        class="w-fit border-4 border-black rounded-lg flex flex-col gap-4 p-2 lg:p-4 bg-white max-w-3xl justify-center"
+        class="w-fit border-4 border-black rounded-lg flex flex-col gap-4 p-2 lg:p-4 bg-white max-w-3xl justify-center min-w-60"
       >
-        <img src={bank.logo.url} alt={bank.name} class="h-[50px]" />
+        <img src={bank?.logo?.url} alt={bank.name} class="h-[50px]" />
         <h2 class="text-center">
           {bank.name}
         </h2>

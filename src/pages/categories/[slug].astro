@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import CreditCard from "@/components/CreditCard.astro";
+import H2 from "@/components/H2.astro";
+import hygraph from "@/js/hygraph";
+import { type Category, type Bank, type Card } from "@/js/interfaces";
+
+export async function getStaticPaths() {
+  const categories = (await hygraph(
+    "categoriesWithCards",
+    "categories"
+  )) as Array<Category>;
+  console.log(categories);
+
+  return categories.map((category) => {
+    return {
+      params: { slug: category.slug },
+      props: { cards: category.card_category, category },
+    };
+  });
+}
+
+interface Props {
+  cards: Array<Card>;
+  category: Bank;
+}
+
+const { cards, category } = Astro.props as Props;
+---
+
+<BaseLayout title={category.name} image={category?.ogImage?.url}>
+  <section class="">
+    <div class="container mx-auto px-5 py-12 grid place-items-center gap-8">
+      <H2 title={`${category.name} cards`} />
+    </div>
+  </section>
+  <section>
+    <div class="container mx-auto px-5 py-16 lg:py-20">
+      <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+        {
+          cards.map((card: Card) => (
+            <CreditCard
+              name={card.name}
+              image={card?.image?.url}
+              apply={card?.applyUrl}
+              learn={`/cards/${card?.slug}`}
+              rating={card?.rating}
+            />
+          ))
+        }
+      </div>
+      {
+        !cards.length && (
+          <p class="text-center">No cards to show for this category.</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

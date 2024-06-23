@@ -1,0 +1,32 @@
+---
+import type { Category } from "@/js/interfaces";
+const {
+  name = "Category Name",
+  image = { url: "//ik.imagekit.io/gavin/gavinpereira/tr:w-450/buildluxe.jpg" },
+  slug = "slug",
+  emoji = {
+    url: "https://em-content.zobj.net/source/apple/391/rocket_1f680.png",
+  },
+} = Astro.props as Category;
+---
+
+<a
+  href={`/categories/` + slug}
+  class="flex flex-col items-center text-center border-brutal-lg p-2 lg:p-4 transition-all duration-300 bg-white relative bottom-0 hover:bottom-1 max-w-sm mx-auto"
+>
+  <div
+    class="w-full border-4 border-black rounded-lg grid place-items-center bg-white relative"
+  >
+    <img
+      src={image.url}
+      alt={name}
+      class="aspect-video object-cover brightness-[0.3]"
+    />
+    <img
+      src={emoji.url}
+      alt=""
+      class="absolute h-[50px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+  </div>
+  <h3 class="text-base lg:text-xl mt-4">{name}</h3>
+</a>

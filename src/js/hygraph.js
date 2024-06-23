@@ -10,12 +10,18 @@ const queries = {
         emoji {
           url
         }
+        image {
+          url
+        }
+        ogImage {
+          url
+        }
       }
     }
   `,
   banks: gql`
     query Banks {
-      banks(where: { draft: false }, first: 30) {
+      banks(where: { draft: false }, first: 99) {
         name
         slug
         description
@@ -61,8 +67,44 @@ const queries = {
         ogImage {
           url
         }
-        bank {
-          ... on Bank {
+      }
+    }
+  `,
+  banksWithCards: gql`
+    query BanksWithCards {
+      banks(first: 99) {
+        name
+        description
+        slug
+        ogImage {
+          url
+        }
+        logo {
+          url
+        }
+        cards {
+          ... on Card {
+            name
+            image {
+              url
+            }
+            applyUrl
+            rating
+          }
+        }
+      }
+    }
+  `,
+  categoriesWithCards: gql`
+    query CategoriesWithCards {
+      categories(first: 99) {
+        name
+        slug
+        image {
+          url
+        }
+        card_category {
+          ... on Card {
             name
           }
         }
@@ -71,9 +113,9 @@ const queries = {
   `,
 };
 
-const hygraph = async (query) => {
+const hygraph = async (query, queryParam) => {
   const res = await request(url, queries[query]);
-  const data = await res[query];
+  const data = await res[queryParam || query];
   return data;
 };
 

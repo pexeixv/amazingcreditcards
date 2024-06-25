@@ -4,7 +4,7 @@ const url = import.meta.env.CONTENT_API;
 const queries = {
   categories: gql`
     query Categories {
-      categories(where: { draft: false }, first: 15) {
+      categories(where: { draft: false }, first: 99) {
         name
         slug
         emoji {
@@ -39,7 +39,7 @@ const queries = {
   `,
   featuredCards: gql`
     query FeaturedCards {
-      cards(where: { featured: true, draft: false }, first: 6) {
+      cards(where: { featured: true, draft: false }, first: 12) {
         name
         slug
         applyUrl
@@ -72,7 +72,7 @@ const queries = {
   `,
   banksWithCards: gql`
     query BanksWithCards {
-      banks(first: 99) {
+      banks(first: 999) {
         name
         description
         slug
@@ -82,7 +82,7 @@ const queries = {
         logo {
           url
         }
-        cards {
+        cards(first: 999) {
           ... on Card {
             name
             image {
@@ -103,7 +103,7 @@ const queries = {
         image {
           url
         }
-        card_category {
+        card_category(first: 999) {
           ... on Card {
             name
           }

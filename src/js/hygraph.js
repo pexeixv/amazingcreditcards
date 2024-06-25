@@ -85,6 +85,7 @@ const queries = {
         cards(first: 999) {
           ... on Card {
             name
+            slug
             image {
               url
             }
@@ -106,6 +107,7 @@ const queries = {
         card_category(first: 999) {
           ... on Card {
             name
+            slug
           }
         }
       }

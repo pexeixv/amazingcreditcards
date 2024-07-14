@@ -2,15 +2,9 @@ export interface Bank {
   name: string;
   slug: string;
   description: string;
-  logo: {
-    url: string;
-  };
-  ogImage: {
-    url: string;
-  };
-  shortLogo: {
-    url: string;
-  };
+  logo: Image;
+  ogImage: Image;
+  shortLogo: Image;
   cards: Array<Card>;
 }
 
@@ -23,9 +17,7 @@ export interface Card {
   content?: {
     html: string;
   };
-  image?: {
-    url: string;
-  };
+  image?: Image;
   ogImage?: {
     url?: string;
   };
@@ -35,14 +27,13 @@ export interface Card {
 export interface Category {
   name: string;
   slug: string;
-  emoji?: {
-    url: string;
-  };
-  image?: {
-    url: string;
-  };
-  ogImage?: {
-    url: string;
-  };
+  emoji?: Image;
+  image?: Image;
+  ogImage?: Image;
   card_category?: Array<Card>;
+}
+
+export interface Image {
+  url: string;
+  handle: string;
 }

@@ -40,7 +40,20 @@ const {
           image,
           url: `https://amazingcreditcards.in${Astro.url.pathname}`,
         },
+        image: {
+          url: image,
+        },
       }}
+      ,
+      twitter={{
+        creator: "@amazingcreditc",
+        site: "@amazingcreditc",
+        description,
+        image,
+        title,
+        card: "summary_large_image",
+      }}
+      ,
     />
     <link rel="shortcut icon" href="/fav.png" type="image/x-icon" />
     <link rel="sitemap" href="/sitemap-index.xml" />

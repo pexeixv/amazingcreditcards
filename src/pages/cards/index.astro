@@ -5,6 +5,8 @@ import H2 from "@/components/H2.astro";
 import { type Card } from "@/js/interfaces";
 
 import hygraph from "@/js/hygraph";
+const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
+
 const cards = (await hygraph("cards")) as Array<Card>;
 ---
 
@@ -17,8 +19,12 @@ const cards = (await hygraph("cards")) as Array<Card>;
         {
           cards.map((card: Card) => (
             <CreditCard
-              name={card?.name}
-              image={card?.image?.url}
+              name={card.name}
+              image={
+                card?.image?.handle
+                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:30/${card?.image?.handle}`
+                  : card?.image?.url
+              }
               apply={card?.applyUrl}
               learn={`/cards/${card?.slug}`}
               rating={card?.rating}

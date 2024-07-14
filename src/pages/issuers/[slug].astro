@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "@/components/BaseLayout.astro";
 import CreditCard from "@/components/CreditCard.astro";
-import hygraph from "@/js/hygraph";
 import { type Bank, type Card } from "@/js/interfaces";
+import hygraph from "@/js/hygraph";
+const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
 export async function getStaticPaths() {
   const banks = (await hygraph("banksWithCards", "banks")) as Array<Bank>;
@@ -26,7 +27,11 @@ interface Props {
 const { cards, bank } = Astro.props as Props;
 ---
 
-<BaseLayout title={bank.name} image={bank?.ogImage?.url}>
+<BaseLayout
+  title={bank.name}
+  image={bank?.ogImage?.url}
+  description={bank.description}
+>
   <section class="border-y-6 border-black">
     <div
       class="container mx-auto px-5 py-16 lg:py-20 grid lg:grid-cols-2 place-items-center gap-8"
@@ -51,7 +56,11 @@ const { cards, bank } = Astro.props as Props;
           cards.map((card: Card) => (
             <CreditCard
               name={card.name}
-              image={card?.image?.url}
+              image={
+                card?.image?.handle
+                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:30/${card?.image?.handle}`
+                  : card?.image?.url
+              }
               apply={card?.applyUrl}
               learn={`/cards/${card?.slug}`}
               rating={card?.rating}

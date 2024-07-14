@@ -8,6 +8,7 @@ const {
     url: "https://em-content.zobj.net/source/apple/391/rocket_1f680.png",
   },
 } = Astro.props as Category;
+const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 ---
 
 <a
@@ -18,9 +19,11 @@ const {
     class="w-full border-4 border-black rounded-lg grid place-items-center bg-white relative"
   >
     <img
-      src={image.url}
+      src={image?.handle
+        ? `${assetBaseUrl}/resize=w:320/quality=value:30/${image?.handle}`
+        : image?.url}
       alt={name}
-      class="aspect-video object-cover brightness-[0.3]"
+      class="aspect-video object-cover brightness-[0.3] h-[180px]"
     />
     <img
       src={emoji.url}

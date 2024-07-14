@@ -12,9 +12,11 @@ const queries = {
         }
         image {
           url
+          handle
         }
         ogImage {
           url
+          handle
         }
       }
     }
@@ -27,12 +29,15 @@ const queries = {
         description
         logo {
           url
+          handle
         }
         ogImage {
           url
+          handle
         }
         shortLogo {
           url
+          handle
         }
       }
     }
@@ -46,6 +51,7 @@ const queries = {
         rating
         image {
           url
+          handle
         }
       }
     }
@@ -63,9 +69,11 @@ const queries = {
         }
         image {
           url
+          handle
         }
         ogImage {
           url
+          handle
         }
       }
     }
@@ -78,9 +86,11 @@ const queries = {
         slug
         ogImage {
           url
+          handle
         }
         logo {
           url
+          handle
         }
         cards(first: 999) {
           ... on Card {
@@ -88,6 +98,7 @@ const queries = {
             slug
             image {
               url
+              handle
             }
             applyUrl
             rating
@@ -103,6 +114,7 @@ const queries = {
         slug
         image {
           url
+          handle
         }
         card_category(first: 999) {
           ... on Card {

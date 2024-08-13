@@ -13,7 +13,13 @@ export interface Card {
   slug: string;
   applyUrl: string;
   rating: number;
-  description?: string;
+  description?: {
+    html: string;
+  };
+  summary?: {
+    html: string;
+  };
+  seoDescription: string;
   content?: {
     html: string;
   };

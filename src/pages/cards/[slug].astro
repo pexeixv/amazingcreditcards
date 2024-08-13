@@ -23,7 +23,9 @@ const {
   applyUrl,
   rating,
   description,
+  seoDescription,
   content,
+  summary,
   image = { url: defaultCard },
   ogImage,
 } = card;
@@ -31,7 +33,7 @@ const {
 
 <BaseLayout
   title={name}
-  {description}
+  description={seoDescription}
   image={ogImage?.handle
     ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:30/${ogImage?.handle}`
     : ogImage?.url}
@@ -60,10 +62,11 @@ const {
           >
         </div>
         {
-          description && (
-            <div class="lg:col-span-2 border-brutal-lg p-6 lg:p-8 flex flex-col justify-center bg-white font-lexend">
-              {description}
-            </div>
+          (
+            <div
+              class="lg:col-span-2 border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose"
+              set:html={description.html}
+            />
           )
         }
       </div>
@@ -73,9 +76,20 @@ const {
   {
     content?.html && (
       <section>
-        <div class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend">
-          <Fragment set:html={content?.html} />
-        </div>
+        <div
+          class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend"
+          set:html={content?.html}
+        />
+      </section>
+    )
+  }
+  {
+    summary?.html && (
+      <section>
+        <div
+          class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend"
+          set:html={summary?.html}
+        />
       </section>
     )
   }

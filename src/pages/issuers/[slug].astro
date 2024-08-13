@@ -44,9 +44,13 @@ const { cards, bank } = Astro.props as Props;
           {bank.name}
         </h2>
       </div>
-      <div class="mx-auto bg-white border-brutal-lg py-10 px-10">
-        {bank.description}
-      </div>
+      {
+        bank.description && (
+          <div class="mx-auto bg-white border-brutal-lg py-10 px-10">
+            {bank.description}
+          </div>
+        )
+      }
     </div>
   </section>
   <section>

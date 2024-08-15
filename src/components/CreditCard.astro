@@ -19,7 +19,13 @@ const {
 <div
   class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center transition-all relative bottom-0 hover:bottom-1 duration-300 bg-white"
 >
-  <img src={image} alt={name} class="h-[180px]" height="180" loading="lazy" />
+  <img
+    src={image}
+    alt={name}
+    class="h-[180px] w-auto object-contain"
+    height="180"
+    loading="lazy"
+  />
 
   <Rating {rating} />
 

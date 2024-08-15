@@ -78,7 +78,7 @@ const categories = (await hygraph("categories")) as Array<Category>;
                 name={card?.name}
                 image={
                   card?.image?.handle
-                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:30/${card?.image?.handle}`
+                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:30/output=format:webp/${card?.image?.handle}`
                     : card?.image?.url
                 }
                 apply={card?.applyUrl}

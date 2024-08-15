@@ -11,7 +11,9 @@ const description =
   "Discover the ideal credit card for your financial goals. Explore our curated selection, compare rewards, rates, and benefits, and apply online. Start your journey to smarter spending today.";
 
 const banks = (await hygraph("banks")) as Array<Bank>;
-const featuredCards = (await hygraph("cards")) as Array<Card>;
+const cards1 = (await hygraph("cards1", "cards")) as Array<Card>;
+const cards2 = (await hygraph("cards2", "cards")) as Array<Card>;
+const featuredCards = [...cards1, ...cards2];
 ---
 
 <BaseLayout {description}>

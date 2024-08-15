@@ -56,9 +56,63 @@ const queries = {
       }
     }
   `,
+  cards1: gql`
+    query Cards {
+      cards(first: 100, skip: 0) {
+        name
+        slug
+        applyUrl
+        rating
+        description {
+          html
+        }
+        summary {
+          html
+        }
+        content {
+          html
+        }
+        image {
+          url
+          handle
+        }
+        ogImage {
+          url
+          handle
+        }
+      }
+    }
+  `,
+  cards2: gql`
+    query Cards {
+      cards(first: 100, skip: 100) {
+        name
+        slug
+        applyUrl
+        rating
+        description {
+          html
+        }
+        summary {
+          html
+        }
+        content {
+          html
+        }
+        image {
+          url
+          handle
+        }
+        ogImage {
+          url
+          handle
+        }
+      }
+    }
+  `,
   cards: gql`
     query Cards {
-      cards(where: { draft: false }, first: 9999) {
+      cards(first: 100) {
         name
         slug
         applyUrl

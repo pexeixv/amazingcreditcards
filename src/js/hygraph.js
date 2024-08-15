@@ -178,6 +178,10 @@ const queries = {
           ... on Card {
             name
             slug
+            image {
+              url
+              handle
+            }
           }
         }
       }

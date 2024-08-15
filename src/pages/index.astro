@@ -3,7 +3,8 @@ import BankCard from "@/components/BankCard.astro";
 import CreditCard from "@/components/CreditCard.astro";
 import BaseLayout from "@/components/BaseLayout.astro";
 import H2 from "@/components/H2.astro";
-import { type Bank, type Card } from "@/js/interfaces";
+import { type Bank, type Card, type Category } from "@/js/interfaces";
+import CategoryCard from "@/components/CategoryCard.astro";
 import hygraph from "@/js/hygraph";
 const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
@@ -11,9 +12,8 @@ const description =
   "Discover the ideal credit card for your financial goals. Explore our curated selection, compare rewards, rates, and benefits, and apply online. Start your journey to smarter spending today.";
 
 const banks = (await hygraph("banks")) as Array<Bank>;
-const cards1 = (await hygraph("cards1", "cards")) as Array<Card>;
-const cards2 = (await hygraph("cards2", "cards")) as Array<Card>;
-const featuredCards = [...cards1, ...cards2];
+const featuredCards = (await hygraph("featuredCards", "cards")) as Array<Card>;
+const categories = (await hygraph("categories")) as Array<Category>;
 ---
 
 <BaseLayout {description}>
@@ -84,6 +84,35 @@ const featuredCards = [...cards1, ...cards2];
                 apply={card?.applyUrl}
                 learn={`/cards/${card?.slug}`}
                 rating={card?.rating}
+              />
+            ))}
+          </div>
+          <div class="mt-8 lg:mt-16 grid place-items-center">
+            <a
+              class="bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 hover:bg-yellow-500/80"
+              href="/cards"
+            >
+              View all cards
+            </a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    categories && (
+      <section class="border-t-6 border-black">
+        <div class="container mx-auto px-5 py-16 lg:py-20">
+          <H2 title="Credit card categories" />
+
+          <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-y-8 gap-x-4 lg:gap-16">
+            {categories.map((category) => (
+              <CategoryCard
+                name={category.name}
+                image={category.image}
+                emoji={category.emoji}
+                slug={category.slug}
               />
             ))}
           </div>

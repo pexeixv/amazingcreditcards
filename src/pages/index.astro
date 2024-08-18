@@ -84,6 +84,7 @@ const categories = (await hygraph("categories")) as Array<Category>;
                 apply={card?.applyUrl}
                 learn={`/cards/${card?.slug}`}
                 rating={card?.rating}
+                description={card?.description}
               />
             ))}
           </div>

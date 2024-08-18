@@ -6,6 +6,9 @@ interface Props {
   rating: number;
   learn?: string;
   apply?: string;
+  description?: {
+    html: string;
+  };
 }
 const {
   name = "Bank Name",
@@ -13,6 +16,7 @@ const {
   rating,
   learn = "#",
   apply = "#",
+  description = { html: "" },
 } = Astro.props as Props;
 ---
 
@@ -32,6 +36,14 @@ const {
   <Rating {rating} />
 
   <a href={learn}><h3 class="lg:text-xl mt-4">{name}</h3></a>
+
+  {
+    description && description?.html && (
+      <div class="prose prose-sm prose-p:m-0 py-4 ">
+        <Fragment set:html={description?.html} />
+      </div>
+    )
+  }
 
   <div class="mt-auto flex items-end">
     <a

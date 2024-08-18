@@ -49,6 +49,9 @@ const queries = {
         slug
         applyUrl
         rating
+        description {
+          html
+        }
         image {
           url
           handle
@@ -154,6 +157,9 @@ const queries = {
           ... on Card {
             name
             slug
+            description {
+              html
+            }
             image {
               url
               handle
@@ -177,6 +183,9 @@ const queries = {
         card_category(first: 9999) {
           ... on Card {
             name
+            description {
+              html
+            }
             slug
             image {
               url

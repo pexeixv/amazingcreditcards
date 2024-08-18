@@ -68,6 +68,7 @@ const { cards, bank } = Astro.props as Props;
               apply={card?.applyUrl}
               learn={`/cards/${card?.slug}`}
               rating={card?.rating}
+              description={card?.description}
             />
           ))
         }

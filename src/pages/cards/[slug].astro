@@ -23,14 +23,14 @@ const { card } = Astro.props;
 const {
   name,
   applyUrl,
-  rating,
+  rating = 1,
   description,
   seoDescription,
   content,
   summary,
   image = { url: defaultCard },
   ogImage,
-} = card;
+} = card as Card;
 ---
 
 <BaseLayout
@@ -64,11 +64,9 @@ const {
           >
         </div>
         {
-          (
-            <div class="lg:col-span-2 border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose">
-              {description && description?.html && (
-                <Fragment set:html={description.html} />
-              )}
+          description && (
+            <div class=" lg:col-span-2 h-fit border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose max-lg:prose-p:m-1 prose-p:m-2 my-auto ">
+              {description?.html && <div set:html={description.html} />}
             </div>
           )
         }
@@ -80,7 +78,7 @@ const {
     content && content?.html && (
       <section>
         <div
-          class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend"
+          class="prose prose-headings:border-brutal-sm prose-headings:p-2 prose-headings:w-fit  lg:mx-auto bg-white border-brutal-lg p-6 lg:p-10 mb-20 max-w-4xl  mx-4 lg:prose-lg font-sans prose-headings:font-lexend"
           set:html={content?.html}
         />
       </section>

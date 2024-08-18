@@ -23,12 +23,7 @@ const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
         ? `${assetBaseUrl}/resize=w:320/quality=value:30/${image?.handle}`
         : image?.url}
       alt={name}
-      class="aspect-video object-cover brightness-[0.3] h-[180px]"
-    />
-    <img
-      src={emoji.url}
-      alt=""
-      class="absolute h-[50px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      class="aspect-video object-cover brightness-[0.8] h-[180px]"
     />
   </div>
   <h3 class="text-base lg:text-xl mt-4">{name}</h3>

@@ -24,9 +24,7 @@ export interface Card {
     html: string;
   };
   image?: Image;
-  ogImage?: {
-    url?: string;
-  };
+  ogImage?: Image;
   bank?: Bank;
 }
 
@@ -40,6 +38,6 @@ export interface Category {
 }
 
 export interface Image {
-  url: string;
-  handle: string;
+  url?: string;
+  handle?: string;
 }

@@ -17,29 +17,28 @@ const {
 ---
 
 <div
-  class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center transition-all relative bottom-0 hover:bottom-1 duration-300 bg-white"
+  class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center text-center relative bottom-0 hover:bottom-1 bg-white hover:scale-105 transition-all duration-500"
 >
-  <img
-    src={image}
-    alt={name}
-    class="h-[180px] w-auto object-contain"
-    height="180"
-    loading="lazy"
-  />
+  <a href={learn}>
+    <img
+      src={image}
+      alt={name}
+      class="h-[180px] w-auto object-contain"
+      height="180"
+      loading="lazy"
+    />
+  </a>
 
   <Rating {rating} />
 
-  <h3 class="lg:text-xl mt-4">{name}</h3>
-  <a
-    class="mt-8 bg-white py-1 px-4 border-brutal transition-all duration-300 w-full hover:bg-yellow-500/30"
-    href={learn}
-  >
-    Learn more</a
-  >
-  <a
-    class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 w-full hover:bg-yellow-500/80"
-    href={apply}
-  >
-    Apply now</a
-  >
+  <a href={learn}><h3 class="lg:text-xl mt-4">{name}</h3></a>
+
+  <div class="mt-auto flex items-end">
+    <a
+      class="mt-4 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 w-full hover:bg-yellow-500/80"
+      href={apply}
+    >
+      Apply now</a
+    >
+  </div>
 </div>

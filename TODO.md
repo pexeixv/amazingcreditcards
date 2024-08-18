@@ -1,0 +1,1 @@
+- Card "Learn more" button to be replaced by card description

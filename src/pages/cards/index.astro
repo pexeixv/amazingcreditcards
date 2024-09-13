@@ -9,7 +9,10 @@ const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
 const cards1 = (await hygraph("cards1", "cards")) as Array<Card>;
 const cards2 = (await hygraph("cards2", "cards")) as Array<Card>;
-const cards = [...cards1, ...cards2];
+const cards3 = (await hygraph("cards3", "cards")) as Array<Card>;
+const cards4 = (await hygraph("cards4", "cards")) as Array<Card>;
+const cards = [...cards1, ...cards2, ...cards3, ...cards4];
+
 ---
 
 <BaseLayout title="Credit Cards">

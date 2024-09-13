@@ -113,6 +113,60 @@ const queries = {
       }
     }
   `,
+  cards3: gql`
+    query Cards {
+      cards(first: 100, skip: 200) {
+        name
+        slug
+        applyUrl
+        rating
+        description {
+          html
+        }
+        summary {
+          html
+        }
+        content {
+          html
+        }
+        image {
+          url
+          handle
+        }
+        ogImage {
+          url
+          handle
+        }
+      }
+    }
+  `,
+  cards4: gql`
+    query Cards {
+      cards(first: 100, skip: 300) {
+        name
+        slug
+        applyUrl
+        rating
+        description {
+          html
+        }
+        summary {
+          html
+        }
+        content {
+          html
+        }
+        image {
+          url
+          handle
+        }
+        ogImage {
+          url
+          handle
+        }
+      }
+    }
+  `,
   cards: gql`
     query Cards {
       cards(first: 100) {

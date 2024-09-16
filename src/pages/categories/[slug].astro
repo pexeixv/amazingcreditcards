@@ -22,16 +22,20 @@ export async function getStaticPaths() {
 
 interface Props {
   cards: Array<Card>;
-  category: Bank;
+  category: Category;
 }
 
 const { cards, category } = Astro.props as Props;
 ---
 
-<BaseLayout title={category.name} image={category?.ogImage?.url}>
+<BaseLayout title={category.name} image={category?.ogImage?.url || category?.image.url}>
   <section class="">
     <div class="container mx-auto px-5 py-12 grid place-items-center gap-8">
-      <H2 title={`${category.name} cards`} />
+      <H2 title={category?.pageTitle || `${category?.name} cards`} />
+      <img src={category?.bannerImage?.url} alt="" class="w-full mt-8">
+      <div class="prose border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white w-full">
+        <Fragment set:html={category?.content?.html} />
+      </div>
     </div>
   </section>
   <section>
@@ -43,7 +47,7 @@ const { cards, category } = Astro.props as Props;
               name={card.name}
               image={
                 card?.image?.handle
-                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:30/output=format:webp/${card?.image?.handle}`
+                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:50/output=format:webp/${card?.image?.handle}`
                   : card?.image?.url
               }
               apply={card?.applyUrl}

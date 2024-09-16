@@ -1,5 +1,6 @@
 export interface Bank {
   name: string;
+  pageTitle?: string;
   slug: string;
   description: string;
   logo: Image;
@@ -13,16 +14,10 @@ export interface Card {
   slug: string;
   applyUrl: string;
   rating: number;
-  description?: {
-    html: string;
-  };
-  summary?: {
-    html: string;
-  };
+  description?: RichText;
+  summary?: RichText;
   seoDescription: string;
-  content?: {
-    html: string;
-  };
+  content?: RichText;
   image?: Image;
   ogImage?: Image;
   bank?: Bank;
@@ -30,14 +25,21 @@ export interface Card {
 
 export interface Category {
   name: string;
+  pageTitle?: string;
   slug: string;
   emoji?: Image;
   image?: Image;
   ogImage?: Image;
+  bannerImage?: Image;
+  content?: RichText;
   card_category?: Array<Card>;
 }
 
 export interface Image {
   url?: string;
   handle?: string;
+}
+
+export interface RichText {
+  html: string;
 }

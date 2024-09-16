@@ -6,6 +6,7 @@ const queries = {
     query Categories {
       categories(where: { draft: false }, first: 9999) {
         name
+        pageTitle
         slug
         emoji {
           url
@@ -26,6 +27,7 @@ const queries = {
       banks(where: { draft: false }, first: 9999) {
         name
         slug
+        pageTitle
         description
         logo {
           url
@@ -61,7 +63,7 @@ const queries = {
   `,
   cards1: gql`
     query Cards {
-      cards(first: 100, skip: 0) {
+      cards(where: { draft: false }, first: 100, skip: 0) {
         name
         slug
         applyUrl
@@ -88,7 +90,7 @@ const queries = {
   `,
   cards2: gql`
     query Cards {
-      cards(first: 100, skip: 100) {
+      cards(where: { draft: false }, first: 100, skip: 100) {
         name
         slug
         applyUrl
@@ -115,7 +117,7 @@ const queries = {
   `,
   cards3: gql`
     query Cards {
-      cards(first: 100, skip: 200) {
+      cards(where: { draft: false }, first: 100, skip: 200) {
         name
         slug
         applyUrl
@@ -142,7 +144,7 @@ const queries = {
   `,
   cards4: gql`
     query Cards {
-      cards(first: 100, skip: 300) {
+      cards(where: { draft: false }, first: 100, skip: 300) {
         name
         slug
         applyUrl
@@ -169,7 +171,7 @@ const queries = {
   `,
   cards: gql`
     query Cards {
-      cards(first: 100) {
+      cards(where: { draft: false }, first: 100) {
         name
         slug
         applyUrl
@@ -196,9 +198,10 @@ const queries = {
   `,
   banksWithCards: gql`
     query BanksWithCards {
-      banks(first: 9999) {
+      banks(where: { draft: false }, first: 9999) {
         name
         slug
+        pageTitle
         ogImage {
           url
           handle
@@ -207,7 +210,7 @@ const queries = {
           url
           handle
         }
-        cards(first: 9999) {
+        cards(where: { draft: false }, first: 9999) {
           ... on Card {
             name
             slug
@@ -227,12 +230,20 @@ const queries = {
   `,
   categoriesWithCards: gql`
     query CategoriesWithCards {
-      categories(first: 9999) {
+      categories(where: { draft: false }, first: 9999) {
         name
         slug
+        pageTitle
         image {
           url
           handle
+        }
+        bannerImage {
+          url
+          handle
+        }
+        content {
+          html
         }
         card_category(first: 9999) {
           ... on Card {

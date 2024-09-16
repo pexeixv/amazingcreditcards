@@ -52,11 +52,13 @@ const {
         <div
           class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
         >
-          <img
+          <div class="border-brutal-lg p-0.5">
+            <img
             src={image?.url || defaultCard}
             alt={name}
             class="mx-auto w-full max-w-[300px]"
           />
+          </div>
           <Rating {rating} />
           <a
             class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 hover:bg-yellow-400 w-fit"
@@ -90,7 +92,7 @@ const {
     summary && summary?.html && (
       <section>
         <div
-          class="prose mx-auto bg-white border-brutal-lg py-10 px-10 mb-20 max-w-4xl font-lexend"
+          class="prose mx-auto border-brutal-lg py-10 px-10  prose-headings:border-brutal-sm prose-headings:p-2 prose-headings:w-fit  lg:mx-auto bg-white border-brutal-lg p-6 lg:p-10 mb-20 max-w-4xl   lg:prose-lg font-sans prose-headings:font-lexend"
           set:html={summary?.html}
         />
       </section>

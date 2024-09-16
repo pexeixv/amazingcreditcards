@@ -61,6 +61,17 @@ const queries = {
       }
     }
   `,
+  featuredCategories: gql`
+    query FeaturedCategories {
+      categories(where: { featured: true, draft: false }, first: 4) {
+        name
+        slug
+        emoji {
+          url
+        }
+      }
+    }
+  `,
   cards1: gql`
     query Cards {
       cards(where: { draft: false }, first: 100, skip: 0) {
@@ -242,9 +253,13 @@ const queries = {
           url
           handle
         }
-        content {
+        content1 {
           html
         }
+        content2 {
+          html
+        }
+
         card_category(first: 9999) {
           ... on Card {
             name

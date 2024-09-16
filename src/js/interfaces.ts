@@ -26,12 +26,14 @@ export interface Card {
 export interface Category {
   name: string;
   pageTitle?: string;
+  featured?: boolean;
   slug: string;
   emoji?: Image;
   image?: Image;
   ogImage?: Image;
   bannerImage?: Image;
-  content?: RichText;
+  content1?: RichText;
+  content2?: RichText;
   card_category?: Array<Card>;
 }
 

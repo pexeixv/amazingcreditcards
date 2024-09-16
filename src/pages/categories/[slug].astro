@@ -32,10 +32,17 @@ const { cards, category } = Astro.props as Props;
   <section class="">
     <div class="container mx-auto px-5 py-12 grid place-items-center gap-8">
       <H2 title={category?.pageTitle || `${category?.name} cards`} />
-      <img src={category?.bannerImage?.url} alt="" class="w-full mt-8">
-      <div class="prose border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white w-full">
-        <Fragment set:html={category?.content?.html} />
+      {category?.content1 &&
+        <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full">
+        <Fragment set:html={category?.content1?.html} />
       </div>
+      }
+      <img src={category?.bannerImage?.url} alt="" class="w-full mt-4">
+      {category?.content2 &&
+        <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full">
+        <Fragment set:html={category?.content2?.html} />
+      </div>
+      }
     </div>
   </section>
   <section>

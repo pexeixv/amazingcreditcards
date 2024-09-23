@@ -14,7 +14,7 @@ const description =
 const banks = (await hygraph("banks")) as Array<Bank>;
 const featuredCards = (await hygraph("featuredCards", "cards")) as Array<Card>;
 const categories = (await hygraph("categories")) as Array<Category>;
-const featuredCategories = (await hygraph("featuredCategories")) as Array<Category>;
+const featuredCategories = (await hygraph("featuredCategories", 'categories')) as Array<Category>;
 ---
 
 <BaseLayout {description}>
@@ -38,14 +38,14 @@ const featuredCategories = (await hygraph("featuredCategories")) as Array<Catego
         >
           Explore →
         </a>
-        <div class="flex f">
-          {JSON.stringify(featuredCategories)}
+        <div class="flex flex-wrap gap-4 mt-12">
           {
-            featuredCategories && featuredCategories?.length && featuredCategories.map(category=>(
-              <div>
-                <img src={category?.emoji?.url} alt="">
-              </div>
-            ))
+            featuredCategories && featuredCategories?.length && featuredCategories.map(category=>
+              <a href={`/categories/${category.slug}`} class="flex flex-col items-center bg-white border-brutal-sm p-2">
+                <img src={category?.emoji?.url} alt="" class="h-6 lg:h-10">
+                <p class="text-sm">{category.name}</p>
+              </a>
+            )
           }
         </div>
       </div>

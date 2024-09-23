@@ -7,6 +7,7 @@ export interface Bank {
   ogImage: Image;
   shortLogo: Image;
   cards: Array<Card>;
+  summary?: RichText;
 }
 
 export interface Card {

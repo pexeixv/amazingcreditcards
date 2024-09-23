@@ -80,4 +80,15 @@ const { cards, bank } = Astro.props as Props;
       }
     </div>
   </section>
+
+  {
+    bank.summary && bank.summary?.html && (
+      <section>
+        <div
+          class="prose mx-auto border-brutal-lg py-10 px-10  prose-headings:border-brutal-sm prose-headings:p-2 prose-headings:w-fit  lg:mx-auto bg-white border-brutal-lg p-6 lg:p-10 mb-20 max-w-4xl   lg:prose-lg font-sans prose-headings:font-lexend"
+          set:html={bank.summary?.html}
+        />
+      </section>
+    )
+  }
 </BaseLayout>

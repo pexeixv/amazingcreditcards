@@ -41,6 +41,9 @@ const queries = {
           url
           handle
         }
+        summary {
+          html
+        }
       }
     }
   `,
@@ -63,7 +66,7 @@ const queries = {
   `,
   featuredCategories: gql`
     query FeaturedCategories {
-      categories(where: { featured: true, draft: false }, first: 4) {
+      categories(first: 4) {
         name
         slug
         emoji {

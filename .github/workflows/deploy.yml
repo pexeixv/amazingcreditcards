@@ -1,28 +1,35 @@
-name: Deploy to FTP
+name: Build and Deploy to FTP
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust this to your default branch if it's not 'main'
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # Specify the Node.js version
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
-      - name: Build
+      - name: Build the Astro app
         run: npm run build
 
-      - name: FTP Deploy
+      - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          ftp-server: ${{ secrets.HOSTINGER_SERVER }}
-          ftp-username: ${{ secrets.HOSTINGER_USERNAME }}
-          ftp-password: ${{ secrets.HOSTINGER_PASSWORD }}
+          server: ${{ secrets.HOSTINGER_SERVER }}
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
           local-dir: ./dist
           server-dir: /
+          git-ftp-args: --insecure  # Optional: Use if you're facing SSL issues

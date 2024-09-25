@@ -38,6 +38,6 @@ jobs:
           server: ${{ secrets.HOSTINGER_SERVER }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
-          local-dir: ./dist
+          local-dir: ./dist/
           server-dir: /
           git-ftp-args: --insecure

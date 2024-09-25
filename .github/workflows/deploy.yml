@@ -18,11 +18,19 @@ jobs:
         with:
           node-version: '18' 
 
+      - name: Set up .env variables
+        run: |
+          echo "CONTENT_API=${{ secrets.CONTENT_API }}" >> .env
+          echo "ASSET_BASE_URL=${{ secrets.ASSET_BASE_URL }}" >> .env
+
+      - name: Install pnpm
+        run: npm i -g pnpm
+
       - name: Install dependencies
-        run: npm install
+        run: pnpm i
 
       - name: Build the Astro app
-        run: npm run build
+        run: pnpm build
 
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

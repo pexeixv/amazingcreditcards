@@ -1,6 +1,6 @@
 name: Deploy Astro Site to Hostinger
 
-# Trigger on push to the main branch
+# Trigger the action on push to the main branch
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use GitHub-hosted Ubuntu environment
 
     steps:
     # Step 1: Checkout the latest code
@@ -29,10 +29,10 @@ jobs:
 
     # Step 4: Deploy to Hostinger via FTP
     - name: Deploy to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@4.5.0
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.0 
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        server: ${{ secrets.HOSTINGER_SERVER }}
+        username: ${{ secrets.HOSTINGER_USERNAME }}
+        password: ${{ secrets.HOSTINGER_PASSWORD }}
         local-dir: ./dist # Directory with the built Astro site
         server-dir: /public_html/ # Directory on Hostinger where files should be uploaded

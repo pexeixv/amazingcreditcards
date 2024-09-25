@@ -22,6 +22,10 @@ export async function getStaticPaths() {
 
 const { card } = Astro.props;
 
+if (!card) {
+  throw new Error("Card not found");
+}
+
 const {
   name,
   applyUrl,

@@ -15,18 +15,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Set up Node.js environment to build the Astro site
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
+    # Step 2: Set up pnpm environment to build the Astro site
+    - name: Setup pnpm
+      run: |
+        npm install -g pnpm
 
-    # Step 3: Install dependencies and build the site
+    # Step 3: Install dependencies and build the site using pnpm
     - name: Install dependencies and build
       run: |
-        npm ci
-        npm run build
-
+        pnpm install
+        pnpm run build
+        
     # Step 4: Deploy to Hostinger via FTP
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.0 

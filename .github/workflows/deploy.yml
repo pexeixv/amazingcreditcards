@@ -3,7 +3,7 @@ name: Build and Deploy to FTP
 on:
   push:
     branches:
-      - main  # Adjust this to your default branch if it's not 'main'
+      - main
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'  # Specify the Node.js version
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -25,11 +25,11 @@ jobs:
         run: npm run build
 
       - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        uses: ftp-deploy-action/ftp-deploy-action@v1.0.0 
         with:
           server: ${{ secrets.HOSTINGER_SERVER }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           local-dir: ./dist
           server-dir: /
-          git-ftp-args: --insecure  # Optional: Use if you're facing SSL issues
+          git-ftp-args: --insecure

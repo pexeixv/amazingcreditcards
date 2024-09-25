@@ -1,37 +1,28 @@
-name: Deploy Astro Site to Hostinger
+name: Deploy to FTP
 
-# Trigger the action on push to the main branch
 on:
   push:
     branches:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest # Use GitHub-hosted Ubuntu environment
-
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-    # Step 1: Checkout the latest code
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    # Step 2: Set up pnpm environment to build the Astro site
-    - name: Setup pnpm
-      run: |
-        npm install -g pnpm
+      - name: Install dependencies
+        run: pnpm install
 
-    # Step 3: Install dependencies and build the site using pnpm
-    - name: Install dependencies and build
-      run: |
-        pnpm install
-        pnpm run build
-        
-    # Step 4: Deploy to Hostinger via FTP
-    - name: Deploy to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.0 
-      with:
-        server: ${{ secrets.HOSTINGER_SERVER }}
-        username: ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.HOSTINGER_PASSWORD }}
-        local-dir: ./dist # Directory with the built Astro site
-        server-dir: /public_html/ # Directory on Hostinger where files should be uploaded
+      - name: Build
+        run: pnpm run build
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          ftp-server: ${{ secrets.HOSTINGER_FTP_URL }}
+          ftp-username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          ftp-password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./dist
+          server-dir: /

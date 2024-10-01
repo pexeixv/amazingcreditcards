@@ -313,9 +313,12 @@ const queries = {
 };
 
 const hygraph = async (query, queryParam) => {
-  const res = await request(url, queries[query]);
-  const data = await res[queryParam || query];
-  return data;
+  try {
+    const res = await request(url, queries[query]);
+    return res[queryParam || query] || [];
+  } catch (error) {
+    console.error("Error fetching data from Hygraph:", error);
+    return [];
+  }
 };
-
 export default hygraph;

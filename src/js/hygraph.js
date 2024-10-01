@@ -66,7 +66,7 @@ const queries = {
   `,
   featuredCategories: gql`
     query FeaturedCategories {
-      categories(first: 4) {
+      categories(first: 6) {
         name
         slug
         emoji {
@@ -274,6 +274,37 @@ const queries = {
               url
               handle
             }
+          }
+        }
+      }
+    }
+  `,
+  blogs: gql`
+    query Blogs {
+      blogs {
+        title
+        slug
+        excerpt
+        image {
+          url
+        }
+        draft
+        ogImage {
+          url
+          handle
+        }
+        content {
+          ... on BlogContent {
+            textContent {
+              html
+            }
+          }
+          ... on HyperlinkedImage {
+            url
+            image {
+              url
+            }
+            description
           }
         }
       }

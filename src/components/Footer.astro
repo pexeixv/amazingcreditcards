@@ -22,12 +22,14 @@ const links = [
     link: "/",
   },
 ];
+
+const year = new Date().getFullYear()
 ---
 
-<footer class="bg-yellow-500 border-y-6 border-black">
+<footer class="bg-yellow-500 border-y-6 border-black relative">
   <div class="container mx-auto px-5 py-10 grid lg:grid-cols-12">
     <div class="lg:col-span-8 flex flex-col justify-center">
-      <div class="flex items-center gap-4 flex-wrap">
+      <div class="flex items-center gap-4 flex-wrap  max-lg:pr-[90px]">
         {
           links.map((link) => (
             <a
@@ -40,9 +42,6 @@ const links = [
         }
       </div>
       <div class="flex items-center gap-4 mt-4 flex-wrap">
-        <p class="border-brutal-sm bg-white px-4 py-1 text-xs">
-          &copy;2024 - All rights reserved.
-        </p>
         <a
           href="//gavinpereira.in/?ref=amazingcreditcards.in"
           target="_blank"
@@ -53,12 +52,12 @@ const links = [
         
       </div>
       <p class="border-brutal-sm bg-white px-4 py-1 text-xs w-fit block mt-4">
-        <strong>amazingcreditcards.in</strong> is not affiliated to any credit card issuer or bank. <br> All trademarks are properties of their respective owners.
+        <strong>amazingcreditcards.in</strong> is not affiliated to any credit card issuer or bank. <br> All trademarks are properties of their respective owners. &copy;{year} - All rights reserved.
       </p>
     </div>
     <div class="lg:col-span-4 flex justify-end">
       <img
-        class="h-[120px]"
+        class="h-[90px] lg:h-[120px] max-lg:absolute top-4 right-4"
         src="/logo-circle.png"
         alt="Amazing Credit Cards"
       />

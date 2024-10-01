@@ -18,39 +18,42 @@ const featuredCategories = (await hygraph("featuredCategories", 'categories')) a
 ---
 
 <BaseLayout {description}>
-  <section class="border-b-4 border-black">
+  <section class="border-b-6 border-black">
     <div
-      class="container mx-auto px-5 py-12 lg:py-32 grid lg:grid-cols-2 gap-12"
+      class="container mx-auto px-5 py-12 lg:py-28"
     >
-      <div class="flex flex-col items-start">
-        <h1 class="tracking-tighter">
-          Discover the <br class="max-lg:hidden" /> Perfect Credit <br
-            class="max-lg:hidden"
-          /> Card for You
-        </h1>
-        <p class="mt-4 lg:mt-8 max-w-2xl lg:text-lg">
-          Embark on your financial journey with Amazing Credit Cards - where the
-          perfect card tailored to your needs awaits discovery.
-        </p>
-        <a
-          class="mt-4 lg:mt-8 bg-yellow-500 py-2 px-8 border-brutal-sm hover:bg-yellow-400 transition-all duration-300"
-          href="#"
-        >
-          Explore →
-        </a>
-        <div class="flex flex-wrap gap-4 mt-12">
-          {
-            featuredCategories && featuredCategories?.length && featuredCategories.map(category=>
-              <a href={`/categories/${category.slug}`} class="flex flex-col items-center bg-white border-brutal-sm p-2">
-                <img src={category?.emoji?.url} alt="" class="h-6 lg:h-10">
-                <p class="text-sm">{category.name}</p>
-              </a>
-            )
-          }
+      <div class=" grid lg:grid-cols-2 gap-12">
+        <div class="flex flex-col items-start">
+          <h1 class="tracking-tighter">
+            Discover the <br class="max-lg:hidden" /> Perfect Credit <br
+              class="max-lg:hidden"
+            /> Card for You
+          </h1>
+          <p class="mt-4 lg:mt-8 max-w-2xl lg:text-lg">
+            Embark on your financial journey with Amazing Credit Cards - where the
+            perfect card tailored to your needs awaits discovery.
+          </p>
+          <a
+            class="mt-4 lg:mt-8 bg-yellow-500 py-2 px-8 border-brutal-sm hover:bg-yellow-400 transition-all duration-300"
+            href="#"
+          >
+            Explore →
+          </a>
+          
+        </div>
+        <div class="flex justify-end">
+          <img src="/hero.svg" alt="" />
         </div>
       </div>
-      <div class="flex justify-end">
-        <img src="/hero.svg" alt="" />
+      <div class="flex flex-wrap gap-4 mt-16 lg:grid-cols-2 justify-center">
+        {
+          featuredCategories && featuredCategories?.length && featuredCategories.map(category=>
+            <a href={`/categories/${category.slug}`} class="flex flex-col items-center bg-white border-brutal-sm p-2">
+              <img src={category?.emoji?.url} alt="" class="h-6 lg:h-8 min-w-20 object-contain">
+              <p class="text-sm">{category.name}</p>
+            </a>
+          )
+        }
       </div>
     </div>
   </section>

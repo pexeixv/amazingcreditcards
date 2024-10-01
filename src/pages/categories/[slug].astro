@@ -26,6 +26,9 @@ interface Props {
 }
 
 const { cards, category } = Astro.props as Props;
+if (!cards || !category) {
+  throw new Error("Cards or category not found");
+}
 ---
 
 <BaseLayout title={category.name} image={category?.ogImage?.url || category?.image.url}>

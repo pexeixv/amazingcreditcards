@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import type { Blog, HyperlinkedImage, TextContent } from "@/js/interfaces";
+import hygraph from "@/js/hygraph";
+import H2 from "@/components/H2.astro";
+const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
+
+export async function getStaticPaths() {
+  const blogs = (await hygraph("blogs")) as Blog[];
+
+  return blogs.map((blog: Blog) => ({
+    params: {
+      slug: blog.slug,
+    },
+    props: {
+      blog,
+    },
+  }));
+}
+
+interface Props {
+    blog: Blog
+}
+
+const { blog } = Astro.props as Props;
+
+if (!blog) {
+  throw new Error("Blog not found");
+}
+---
+
+<BaseLayout title={blog.title} 
+    description={blog.excerpt}
+    image={blog.ogImage?.handle
+    ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:50/output=format:webp/${blog.ogImage?.handle}`
+    : blog.ogImage?.url}>
+
+<section class="">
+    <div class="container mx-auto px-5 py-12 gap-8">
+      <H2 title={blog?.title} />
+      <img src={blog?.image?.url} alt="" class="w-full mt-4"/>
+      <div class="flex flex-col gap-8 mt-12">
+        {
+          blog.content && !!blog.content.length && blog.content.map((c: TextContent | HyperlinkedImage)=>{
+              if(c?.textContent) return <div class="lg:col-span-2 h-fit border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose max-lg:prose-p:m-1 prose-p:m-2 m-auto w-full">
+                <Fragment set:html={c?.textContent?.html} />
+              </div>
+              if(c?.image) return <div class="grid place-items-center">
+                <a href={c?.url} class="w-full"><img class="w-full" src={c?.image?.url} alt={c?.image?.description || ''} /></a>
+              </div>
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

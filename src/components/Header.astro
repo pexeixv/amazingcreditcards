@@ -35,7 +35,7 @@ const links = [
   },
   {
     label: "Blog",
-    href: "/",
+    href: "/blog",
   },
   {
     label: "About",
@@ -153,13 +153,25 @@ const links = [
           links.map((link) =>
             link.links ? (
               <li class="relative cursor-pointer" data-submenu-toggler="true">
-                <div class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300 w-fit">
-                  <a href={link.href} class="" target={link.target}>
-                    {link.label}
-                  </a>
-                  {link.icon && <i class={link.icon} />}
+                <div class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300 w-fit flex items-center">
+                  {link.label}
+                  {link.icon && (
+                    <link.icon
+                      class="size-4"
+                      fill="black"
+                      stroke="transparent"
+                    />
+                  )}
                 </div>
                 <ul class="pl-6 flex-wrap gap-4 mt-4 hidden">
+                  <li>
+                    <a
+                        class="bg-white border-brutal-sm whitespace-nowrap py-1 px-3 text-sm"
+                        href={link.href}
+                      >
+                        ALL
+                      </a>
+                  </li>
                   {link.links.map((sublink) => (
                     <li>
                       <a
@@ -176,11 +188,17 @@ const links = [
               <li>
                 <a
                   href={link.href}
-                  class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300"
+                  class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300 flex items-center"
                   target={link.target}
                 >
                   {link.label}
-                  {link.icon && <i class={link.icon} />}
+                  {link.icon && (
+                    <link.icon
+                      class="size-4"
+                      fill="black"
+                      stroke="transparent"
+                    />
+                  )}
                 </a>
               </li>
             )

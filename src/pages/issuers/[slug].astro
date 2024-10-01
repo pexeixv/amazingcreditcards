@@ -25,6 +25,10 @@ interface Props {
 }
 
 const { cards, bank } = Astro.props as Props;
+
+if (!cards || !bank) {
+  throw new Error("Cards or bank not found");
+}
 ---
 
 <BaseLayout

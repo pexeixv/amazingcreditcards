@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import BlogCard from "@/components/BlogCard.astro";
+import H2 from "@/components/H2.astro";
+import hygraph from "@/js/hygraph";
+import type { Blog } from "@/js/interfaces";
+const blogs = (await hygraph("blogs")) as Blog[];
+---
+
+<BaseLayout title="Blog">
+    <section class="border-b-6 border-black">
+        <div class="container mx-auto px-5 py-16 lg:py-20">
+          <H2 title="Blog" />
+          <div class="mt-16 lg:mt-28 grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+            {
+              blogs.map((blog: Blog) => (
+                <BlogCard {blog} />
+              ))
+            }
+          </div>
+          </div></section>
+
+</BaseLayout>

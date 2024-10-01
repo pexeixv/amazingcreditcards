@@ -38,6 +38,26 @@ export interface Category {
   card_category?: Array<Card>;
 }
 
+export interface Blog {
+  title: string;
+  slug: string;
+  excerpt: string;
+  image: Image;
+  draft: boolean;
+  ogImage: Image;
+  content: (TextContent | HyperlinkedImage)[];
+}
+
+export interface TextContent {
+  textContent: RichText;
+}
+
+export interface HyperlinkedImage {
+  image: Image;
+  url?: string;
+  description?: string;
+}
+
 export interface Image {
   url?: string;
   handle?: string;

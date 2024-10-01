@@ -22,6 +22,10 @@ export async function getStaticPaths() {
 
 const { card } = Astro.props;
 
+if (!card) {
+  throw new Error("Card not found");
+}
+
 const {
   name,
   applyUrl,
@@ -52,13 +56,11 @@ const {
         <div
           class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
         >
-          <div class="border-brutal-lg p-0.5">
             <img
             src={image?.url || defaultCard}
             alt={name}
             class="mx-auto w-full max-w-[300px]"
           />
-          </div>
           <Rating {rating} />
           <a
             class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 hover:bg-yellow-400 w-fit"

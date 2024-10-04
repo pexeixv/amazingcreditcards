@@ -1,1 +1,6 @@
-- Card "Learn more" button to be replaced by card description
+- Sidebar > Categories > All in one line
+- Card inc. image quality
+- Homepage OG image missing
+- Copyright disclaimer > Cred0fly
+- Drafted content still showing
+- SEO content for homepage

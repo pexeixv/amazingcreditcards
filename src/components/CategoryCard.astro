@@ -23,7 +23,7 @@ const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
         ? `${assetBaseUrl}/resize=w:320/quality=value:75/${image?.handle}`
         : image?.url}
       alt={name}
-      class="aspect-video object-cover h-[180px] rounded-lg"
+      class="aspect-video object-cover object-right h-[180px] rounded-lg"
     />
   </div>
   <h3 class="text-base lg:text-xl mt-4">{name}</h3>

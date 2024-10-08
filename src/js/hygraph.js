@@ -281,7 +281,7 @@ const queries = {
   `,
   blogs: gql`
     query Blogs {
-      blogs {
+      blogs(where: { draft: false }, first: 9999) {
         title
         slug
         excerpt
@@ -293,7 +293,7 @@ const queries = {
           url
           handle
         }
-        content {
+        content(first: 999) {
           ... on BlogContent {
             textContent {
               html

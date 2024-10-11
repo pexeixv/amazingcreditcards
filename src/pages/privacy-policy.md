@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-layout: ../components/BaseLayout.astro
+layout: ../components/BlogLayout.astro
 ---
 
 # Privacy Policy

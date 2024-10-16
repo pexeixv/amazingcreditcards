@@ -7,7 +7,7 @@ layout: ../components/BlogLayout.astro
 
 ## Your Privacy Matters to Us
 
-At Amazing Credit Cards (referred to as “we,” “us,” or “https://amazingcreditcards.com”), we take your privacy seriously. This Privacy Policy outlines how we handle the personal information you provide to us through our website. We are committed to safeguarding your privacy and explaining how we collect, use, and disclose your information.
+At Amazing Credit Cards (referred to as “we,” “us,” or “https://amazingcreditcards.in”), we take your privacy seriously. This Privacy Policy outlines how we handle the personal information you provide to us through our website. We are committed to safeguarding your privacy and explaining how we collect, use, and disclose your information.
 
 This Privacy Policy applies solely to information collected via our website and not to information collected from other channels.
 

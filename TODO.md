@@ -4,3 +4,5 @@
 - Copyright disclaimer > Cred0fly
 - Drafted content still showing
 - SEO content for homepage
+- Bank content and summary richtext to be shown
+- About us markdown 

@@ -15,22 +15,22 @@ const links = [
   },
   {
     label: "Blog",
-    link: "/",
+    link: "/blog",
   },
   {
     label: "About",
-    link: "/",
+    link: "/about-us",
   },
-{ label: "Privacy Policy", link: "/privacy-policy"}
+  { label: "Privacy Policy", link: "/privacy-policy" },
 ];
 
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-yellow-500 border-y-6 border-black relative">
   <div class="container mx-auto px-5 py-10 grid lg:grid-cols-12">
     <div class="lg:col-span-8 flex flex-col justify-center">
-      <div class="flex items-center gap-4 flex-wrap  max-lg:pr-[90px]">
+      <div class="flex items-center gap-4 flex-wrap max-lg:pr-[90px]">
         {
           links.map((link) => (
             <a
@@ -50,10 +50,11 @@ const year = new Date().getFullYear()
         >
           <Code2 class="size-4 inline" /> by Gavin Pereira
         </a>
-        
       </div>
       <p class="border-brutal-sm bg-white px-4 py-1 text-xs w-fit block mt-4">
-        <strong>amazingcreditcards.in</strong> is not affiliated to any credit card issuer or bank. <br> All trademarks are properties of their respective owners. &copy;{year} - All rights reserved.
+        <strong>amazingcreditcards.in</strong> is not affiliated to any credit card
+        issuer or bank. <br /> All trademarks are properties of their respective
+        owners. &copy;{year} - All rights reserved.
       </p>
     </div>
     <div class="lg:col-span-4 flex justify-end">

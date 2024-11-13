@@ -266,6 +266,7 @@ const queries = {
         card_category(first: 9999) {
           ... on Card {
             name
+            rating
             description {
               html
             }

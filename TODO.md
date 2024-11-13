@@ -5,4 +5,6 @@
 - Drafted content still showing
 - SEO content for homepage
 - Bank content and summary richtext to be shown
-- About us markdown 
+- About us markdown
+- Categories all cards showing 3 star
+- Sort cards based on rating

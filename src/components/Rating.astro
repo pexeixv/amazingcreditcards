@@ -1,14 +1,15 @@
 ---
-import { numberArray } from "@/js/utils";
+import { numberArray, roundToStarRating } from "@/js/utils";
 interface Props {
   rating: number;
 }
 const { rating = 3 } = Astro.props as Props;
+const stars = roundToStarRating(rating);
 ---
 
 <div class="flex items-center gap-2 mt-6">
-  <span class="sr-only">{rating}/5 star rating</span>
-  {numberArray(rating).map(() => <img src="/star-yellow.svg" alt="" />)}
-  {rating.toString().endsWith(".5") && <img src="/star-half.svg" alt="" />}
-  {numberArray(5 - rating).map(() => <img src="/star-white.svg" alt="" />)}
+  <span class="sr-only">{stars}/5 star rating</span>
+  {numberArray(stars).map(() => <img src="/star-yellow.svg" alt="" />)}
+  {stars.toString().endsWith(".5") && <img src="/star-half.svg" alt="" />}
+  {numberArray(5 - stars).map(() => <img src="/star-white.svg" alt="" />)}
 </div>

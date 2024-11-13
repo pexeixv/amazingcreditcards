@@ -34,12 +34,12 @@ const featuredCategories = (await hygraph(
             Embark on your financial journey with Amazing Credit Cards - where
             the perfect card tailored to your needs awaits discovery.
           </p>
-          <a
+          <button
             class="mt-4 lg:mt-8 bg-yellow-500 py-2 px-8 border-brutal-sm hover:bg-yellow-400 transition-all duration-300"
-            href="#"
+            onclick="document.getElementById('cards').scrollIntoView()"
           >
             Explore →
-          </a>
+          </button>
         </div>
         <div class="flex justify-end">
           <img src="/hero.svg" alt="" />
@@ -67,7 +67,7 @@ const featuredCategories = (await hygraph(
     </div>
   </section>
 
-  <section class="border-y-4 border-black">
+  <section class="border-y-4 border-black" id="issuers">
     <div class="container mx-auto px-5 py-16 lg:py-20">
       <H2 title="Top credit card issuers" />
 
@@ -91,7 +91,7 @@ const featuredCategories = (await hygraph(
 
   {
     featuredCards && (
-      <section class="border-y-4 border-black">
+      <section class="border-y-4 border-black" id="cards">
         <div class="container mx-auto px-5 py-16 lg:py-20">
           <H2 title="Most popular credit cards" />
 
@@ -101,7 +101,7 @@ const featuredCategories = (await hygraph(
                 name={card?.name}
                 image={
                   card?.image?.handle
-                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:75/output=format:webp/${card?.image?.handle}`
+                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:90/output=format:webp/${card?.image?.handle}`
                     : card?.image?.url
                 }
                 apply={card?.applyUrl}

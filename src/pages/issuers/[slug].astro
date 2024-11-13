@@ -43,7 +43,11 @@ if (!cards || !bank) {
       <div
         class="w-fit border-2 border-black rounded-lg flex flex-col gap-4 p-2 lg:p-4 bg-white max-w-3xl justify-center min-w-60"
       >
-        <img src={bank?.logo?.url} alt={bank.name} class="h-[50px] w-auto object-contain" />
+        <img
+          src={bank?.logo?.url}
+          alt={bank.name}
+          class="h-[50px] w-auto object-contain"
+        />
         <h2 class="text-center">
           {bank.pageTitle || bank.name}
         </h2>
@@ -66,7 +70,7 @@ if (!cards || !bank) {
               name={card.name}
               image={
                 card?.image?.handle
-                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:75/output=format:webp/${card?.image?.handle}`
+                  ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:90/output=format:webp/${card?.image?.handle}`
                   : card?.image?.url
               }
               apply={card?.applyUrl}

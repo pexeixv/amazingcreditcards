@@ -101,7 +101,7 @@ const featuredCategories = (await hygraph(
                 name={card?.name}
                 image={
                   card?.image?.handle
-                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:90/output=format:webp/${card?.image?.handle}`
+                    ? `${assetBaseUrl}/resize=h:120,fit:crop/quality=value:100/output=format:webp/${card?.image?.handle}`
                     : card?.image?.url
                 }
                 apply={card?.applyUrl}

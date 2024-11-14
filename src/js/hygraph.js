@@ -271,6 +271,7 @@ const queries = {
               html
             }
             slug
+            applyUrl
             image {
               url
               handle

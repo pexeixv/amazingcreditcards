@@ -43,7 +43,7 @@ const {
   title={name}
   description={seoDescription}
   image={ogImage?.handle
-    ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:100/output=format:webp/${ogImage?.handle}`
+    ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:10/output=format:webp/${ogImage?.handle}`
     : ogImage?.url}
 >
   <section>
@@ -57,7 +57,9 @@ const {
           class="border-brutal-lg p-6 lg:p-8 flex flex-col items-center bg-white"
         >
           <img
-            src={image?.url || defaultCard}
+            src={image?.handle
+              ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:10/output=format:webp/${image?.handle}`
+              : image?.url || defaultCard}
             alt={name}
             class="mx-auto w-full max-w-[300px]"
           />
@@ -65,6 +67,7 @@ const {
           <a
             class="mt-8 bg-yellow-500 py-1 px-4 border-brutal transition-all duration-300 hover:bg-yellow-400 w-fit"
             href={applyUrl}
+            target="_blank"
           >
             Apply now</a
           >

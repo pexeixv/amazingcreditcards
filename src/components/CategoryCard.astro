@@ -13,17 +13,18 @@ const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
 <a
   href={`/categories/` + slug}
-  class="flex flex-col items-center text-center border-brutal-lg p-2 lg:p-4 transition-all duration-300 bg-white relative bottom-0 hover:bottom-1 max-w-sm mx-auto"
+  class="flex flex-col items-center text-center border-brutal-lg p-2 lg:p-4 transition-all duration-300 bg-white relative bottom-0 lg:hover:bottom-1 max-w-sm mx-auto"
 >
   <div
     class="w-full border-2 border-black rounded-lg grid place-items-center bg-white relative"
   >
     <img
       src={image?.handle
-        ? `${assetBaseUrl}/resize=w:320/quality=value:100/${image?.handle}`
+        ? `${assetBaseUrl}/resize=h:180,fit:crop/quality=value:50/${image?.handle}`
         : image?.url}
       alt={name}
       class="aspect-video object-cover object-right h-[180px] rounded-lg"
+      height="180"
     />
   </div>
   <h3 class="text-base lg:text-xl mt-4">{name}</h3>

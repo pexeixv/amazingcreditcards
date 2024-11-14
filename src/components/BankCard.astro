@@ -9,7 +9,7 @@ const { name = "Bank Name", image, link = "#" } = Astro.props as Props;
 
 <a
   href={link}
-  class="flex flex-col items-center text-center border-brutal-lg p-2 lg:p-4 transition-all duration-500 bg-white relative bottom-0 hover:bottom-1 hover:scale-105"
+  class="flex flex-col items-center text-center border-brutal-lg p-2 lg:p-4 transition-all duration-500 bg-white relative bottom-0 lg:hover:bottom-1 lg:hover:scale-105"
 >
   <div class="w-full rounded-lg grid place-items-center p-2 lg:p-4 bg-white">
     <img src={image} alt={name} class="h-[50px]" />

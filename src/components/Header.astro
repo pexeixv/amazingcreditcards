@@ -6,7 +6,7 @@ const filteredBanks = banks.map(({ name, slug, shortLogo }) => ({
   href: `/issuers/${slug}`,
   image: shortLogo?.url || "",
 }));
-import { Menu, X, Twitter, ChevronDown } from "lucide-astro";
+import { Menu, X, Twitter, ChevronDown, Asterisk } from "lucide-astro";
 
 const filteredCategories = categories.map(({ name, slug, emoji }) => ({
   label: name,
@@ -136,14 +136,14 @@ const links = [
 
 <aside
   id="aside"
-  class="fixed top-0 -right-[28rem] w-[70%] max-w-md bg-yellow-500 z-50 border-l-6 border-black transition-all duration-500 p-5 lg:p-10 pb-28 flex flex-col h-screen"
+  class="fixed top-0 -right-[28rem] w-[70%] max-w-md bg-white z-50 border-l-6 border-black transition-all duration-500 p-5 lg:p-10 pb-28 flex flex-col h-screen overflow-y-auto"
 >
   <div class="flex flex-col flex-1">
     <div class="flex justify-end">
       <button
         id="hamburger"
         data-menu-toggler
-        class="border-brutal-sm px-3 py-1 bg-white text-sm hover:bg-yellow-100 transition-colors duration-300 lg:hidden"
+        class="border-brutal-sm px-3 py-1 bg-white text-sm  transition-colors duration-300 lg:hidden"
       >
         <X class="size-5" />
       </button>
@@ -154,7 +154,7 @@ const links = [
           links.map((link) =>
             link.links ? (
               <li class="relative cursor-pointer" data-submenu-toggler="true">
-                <div class="border-brutal-sm px-3 py-1 bg-white hover:bg-yellow-100 transition-colors duration-300 w-fit flex items-center">
+                <div class="border-brutal-sm px-3 py-1 bg-white  transition-colors duration-300 w-fit flex items-center">
                   {link.label}
                   {link.icon && (
                     <link.icon
@@ -164,22 +164,24 @@ const links = [
                     />
                   )}
                 </div>
-                <ul class="pl-6 flex-col gap-4 mt-4 hidden">
+                <ul class="px-4 py-2 ml-6 flex-col mt-4 hidden bg-white border-brutal-sm w-full divide-y-2 divide-neutral-200">
                   <li>
                     <a
-                        class="bg-white border-brutal-sm whitespace-nowrap py-1 px-3 text-sm"
+                        class="whitespace-nowrap text-sm py-1 my-1 relative hover:left-2 left-0 transition-all duration-300 flex items-center gap-2"
                         href={link.href}
                       >
+                        <Asterisk class="size-4" />
                         ALL
                       </a>
                   </li>
                   {link.links.map((sublink) => (
-                    <li>
+                    <li class="">
                       <a
-                        class="bg-white border-brutal-sm whitespace-nowrap py-1 px-3 text-sm"
+                        class="whitespace-nowrap text-sm py-1 my-1 relative hover:left-2 left-0 transition-all duration-300 flex items-center gap-2"
                         href={sublink.href}
                       >
-                        {sublink.label}
+                        <img src={sublink.image} alt="" class="h-4">
+                        <span>{sublink.label}</span>
                       </a>
                     </li>
                   ))}
@@ -220,6 +222,7 @@ const links = [
 <script>
   const aside = document.querySelector("#aside") as HTMLDivElement;
   const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
+  const body = document.body as HTMLBodyElement
   const menuTogglers = document.querySelectorAll(
     "[data-menu-toggler]"
   ) as NodeListOf<HTMLButtonElement>;
@@ -230,6 +233,7 @@ const links = [
       aside.classList.toggle("-right-[28rem]");
       backdrop.classList.toggle("opacity-0");
       backdrop.classList.toggle("pointer-events-none");
+      body.classList.toggle('overflow-y-hidden')
     })
   );
 

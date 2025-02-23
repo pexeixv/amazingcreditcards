@@ -4,16 +4,20 @@ import H2 from "@/components/H2.astro";
 import BankCard from "@/components/BankCard.astro";
 import hygraph from "@/js/hygraph";
 import { type Bank } from "@/js/interfaces";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 const banks = (await hygraph("banks")) as Array<Bank>;
+
+const navItems = [{ label: "Issuers" }];
 ---
 
 <BaseLayout title="Card Issuers">
   <section class="border-b-6 border-black">
     <div class="container mx-auto px-5 py-16 lg:py-20">
       <H2 title="Top credit card issuers" />
+      <Breadcrumbs navItems={navItems} />
 
       <div
-        class="mt-16 lg:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-16"
+        class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-16"
       >
         {
           banks

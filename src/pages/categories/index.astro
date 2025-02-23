@@ -4,15 +4,19 @@ import H2 from "@/components/H2.astro";
 import CategoryCard from "@/components/CategoryCard.astro";
 import hygraph from "@/js/hygraph";
 import { type Category } from "@/js/interfaces";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 const categories = (await hygraph("categories")) as Array<Category>;
+
+const navItems = [{ label: "Categories" }];
 ---
 
 <BaseLayout title="Card Categories">
   <section class="border-black">
     <div class="container mx-auto px-5 py-16 lg:py-20">
       <H2 title="Credit card categories" />
+      <Breadcrumbs navItems={navItems} />
 
-      <div class="mt-16 lg:mt-28 grid lg:grid-cols-3 gap-y-8 gap-x-4 lg:gap-16">
+      <div class="mt-16 grid lg:grid-cols-3 gap-y-8 gap-x-4 lg:gap-16">
         {
           categories.map((category) => (
             <CategoryCard

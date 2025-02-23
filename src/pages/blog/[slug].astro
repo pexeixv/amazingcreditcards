@@ -3,6 +3,7 @@ import BaseLayout from "@/components/BaseLayout.astro";
 import type { Blog, HyperlinkedImage, TextContent } from "@/js/interfaces";
 import hygraph from "@/js/hygraph";
 import H2 from "@/components/H2.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
 export async function getStaticPaths() {
@@ -27,6 +28,7 @@ const { blog } = Astro.props as Props;
 if (!blog) {
   throw new Error("Blog not found");
 }
+const navItems = [{ href: "/blog", label: "Blogs" }, { label: blog?.title }];
 ---
 
 <BaseLayout
@@ -39,6 +41,7 @@ if (!blog) {
   <section class="">
     <div class="container mx-auto px-5 py-12 gap-8">
       <H2 title={blog?.title} />
+      <Breadcrumbs navItems={navItems} />
       <img src={blog?.image?.url} alt="" class="w-full mt-4" />
       <div class="flex flex-col gap-8 mt-12">
         {

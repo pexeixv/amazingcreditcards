@@ -4,6 +4,7 @@ import CreditCard from "@/components/CreditCard.astro";
 import H2 from "@/components/H2.astro";
 import { type Category, type Bank, type Card } from "@/js/interfaces";
 import hygraph from "@/js/hygraph";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 const assetBaseUrl = import.meta.env.ASSET_BASE_URL;
 
 export async function getStaticPaths() {
@@ -29,6 +30,11 @@ const { cards, category } = Astro.props as Props;
 if (!cards || !category) {
   throw new Error("Cards or category not found");
 }
+
+const navItems = [
+  { href: "/categories", label: "Categories" },
+  { label: category?.name },
+];
 ---
 
 <BaseLayout
@@ -36,11 +42,12 @@ if (!cards || !category) {
   image={category?.ogImage?.url || category?.image.url}
 >
   <section class="">
-    <div class="container mx-auto px-5 py-12 grid place-items-center gap-8">
+    <div class="container mx-auto px-5 py-12 gap-8">
       <H2 title={category?.pageTitle || `${category?.name} cards`} />
+      <Breadcrumbs navItems={navItems} />
       {
         category?.content1 && (
-          <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full">
+          <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full mx-auto mt-8 ">
             <Fragment set:html={category?.content1?.html} />
           </div>
         )
@@ -48,7 +55,7 @@ if (!cards || !category) {
       <img src={category?.bannerImage?.url} alt="" class="w-full mt-4" />
       {
         category?.content2 && (
-          <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full">
+          <div class="prose border-brutal-lg p-4 flex flex-col items-center bg-white w-full mx-auto  mt-8">
             <Fragment set:html={category?.content2?.html} />
           </div>
         )

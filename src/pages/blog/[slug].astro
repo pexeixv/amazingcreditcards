@@ -47,7 +47,7 @@ if (!blog) {
             blog.content.map((c: TextContent | HyperlinkedImage) => {
               if (c?.textContent)
                 return (
-                  <div class="lg:col-span-2 h-fit border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose max-lg:prose-p:m-1 prose-p:m-2 m-auto w-full max-w-4xl">
+                  <div class="lg:col-span-2 h-fit border-brutal-lg p-6 lg:p-8 flex flex-col bg-white font-lexend prose max-lg:prose-p:m-1 prose-p:m-2 m-auto w-full max-w-4xl prose-h2:border-brutal  prose-h2:p-2">
                     <Fragment set:html={c?.textContent?.html} />
                   </div>
                 );

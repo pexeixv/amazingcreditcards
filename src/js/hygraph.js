@@ -283,7 +283,7 @@ const queries = {
   `,
   blogs: gql`
     query Blogs {
-      blogs(where: { draft: false }, first: 9999) {
+      blogs(where: { draft: false }, first: 9999, orderBy: createdAt_DESC) {
         title
         slug
         excerpt

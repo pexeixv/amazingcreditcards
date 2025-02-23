@@ -70,7 +70,7 @@ if (!cards || !bank) {
               name={card.name}
               image={
                 card?.image?.handle
-                  ? `${assetBaseUrl}/resize=h:180,fit:crop/quality=value:10/output=format:webp/${card?.image?.handle}`
+                  ? `${assetBaseUrl}/resize=h:180,fit:crop/quality=value:50/output=format:webp/${card?.image?.handle}`
                   : card?.image?.url
               }
               apply={card?.applyUrl}

@@ -70,10 +70,6 @@ const {
       })(window, document, "script", "dataLayer", "GTM-KLT3J33F");
     </script>
     <!-- End Google Tag Manager -->
-    <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-      async
-      defer></script>
   </head>
   <body class="min-h-screen flex flex-col overflow-x-hidden font-lexend-giga">
     <!-- Google Tag Manager (noscript) -->
@@ -85,18 +81,6 @@ const {
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
-
-    <div
-      id="captcha-overlay"
-      style="position: fixed; width: 100%; height: 100vh; background: white; display: flex; justify-content: center; align-items: center;"
-    >
-      <div
-        class="cf-turnstile"
-        data-sitekey="0x4AAAAAAA_o4xbWwWe8x4In"
-        data-callback="onCaptchaSuccess"
-      >
-      </div>
-    </div>
 
     <Header {banks} {categories} />
     <TailwindSizeIndicator />

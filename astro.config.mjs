@@ -7,6 +7,14 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.graphassets.com",
+      },
+    ],
+  },
   site: "https://amazingcreditcards.in",
   integrations: [tailwind(), sitemap()],
 });

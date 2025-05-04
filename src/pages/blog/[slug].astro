@@ -34,9 +34,7 @@ const navItems = [{ href: "/blog", label: "Blogs" }, { label: blog?.title }];
 <BaseLayout
   title={blog.title}
   description={blog.excerpt}
-  image={blog.ogImage?.handle
-    ? `${assetBaseUrl}/resize=h:200,fit:crop/quality=value:50/output=format:webp/${blog.ogImage?.handle}`
-    : blog.ogImage?.url}
+  image={blog.ogImage?.url}
 >
   <section class="">
     <div class="container mx-auto px-5 py-12 gap-8">

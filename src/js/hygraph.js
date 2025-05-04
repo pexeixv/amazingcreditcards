@@ -13,11 +13,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -31,15 +29,12 @@ const queries = {
         description
         logo {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
         shortLogo {
           url
-          handle
         }
         summary {
           html
@@ -59,7 +54,6 @@ const queries = {
         }
         image {
           url
-          handle
         }
       }
     }
@@ -93,11 +87,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -120,11 +112,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -147,11 +137,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -174,11 +162,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -201,11 +187,9 @@ const queries = {
         }
         image {
           url
-          handle
         }
         ogImage {
           url
-          handle
         }
       }
     }
@@ -218,11 +202,9 @@ const queries = {
         pageTitle
         ogImage {
           url
-          handle
         }
         logo {
           url
-          handle
         }
         cards(where: { draft: false }, first: 9999) {
           ... on Card {
@@ -233,7 +215,6 @@ const queries = {
             }
             image {
               url
-              handle
             }
             applyUrl
             rating
@@ -250,11 +231,9 @@ const queries = {
         pageTitle
         image {
           url
-          handle
         }
         bannerImage {
           url
-          handle
         }
         content1 {
           html
@@ -274,7 +253,6 @@ const queries = {
             applyUrl
             image {
               url
-              handle
             }
           }
         }
@@ -293,7 +271,6 @@ const queries = {
         draft
         ogImage {
           url
-          handle
         }
         content(first: 999) {
           ... on BlogContent {

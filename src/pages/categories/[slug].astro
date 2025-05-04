@@ -69,11 +69,7 @@ const navItems = [
           cards.map((card: Card) => (
             <CreditCard
               name={card.name}
-              image={
-                card?.image?.handle
-                  ? `${assetBaseUrl}/resize=h:180,fit:crop/quality=value:50/output=format:webp/${card?.image?.handle}`
-                  : card?.image?.url
-              }
+              image={card?.image?.url}
               apply={card?.applyUrl}
               learn={`/cards/${card?.slug}`}
               rating={card?.rating}

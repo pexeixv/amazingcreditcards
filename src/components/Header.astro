@@ -11,7 +11,7 @@ import { Menu, X, Twitter, ChevronDown, Asterisk } from "lucide-astro";
 const filteredCategories = categories.map(({ name, slug, emoji }) => ({
   label: name,
   href: `/categories/${slug}`,
-  image: emoji.url,
+  image: emoji?.url,
 }));
 
 const links = [

@@ -20,7 +20,10 @@ const featuredCategories = (await hygraph(
 )) as Array<Category>;
 ---
 
-<BaseLayout title="Amazing Credit Cards: Compare Credit Cards & Apply Online in India" {description}>
+<BaseLayout
+  title="Amazing Credit Cards: Compare Credit Cards & Apply Online in India"
+  {description}
+>
   <section class="border-b-6 border-black">
     <div class="container mx-auto px-5 py-12 lg:py-28">
       <div class="grid lg:grid-cols-2 gap-12">
@@ -99,11 +102,7 @@ const featuredCategories = (await hygraph(
             {featuredCards.map((card: Card) => (
               <CreditCard
                 name={card?.name}
-                image={
-                  card?.image?.handle
-                    ? `${assetBaseUrl}/resize=h:180,fit:crop/quality=value:50/output=format:webp/${card?.image?.handle}`
-                    : card?.image?.url
-                }
+                image={card?.image?.url}
                 apply={card?.applyUrl}
                 learn={`/cards/${card?.slug}`}
                 rating={card?.rating}

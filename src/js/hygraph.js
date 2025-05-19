@@ -1,5 +1,18 @@
 import { request, gql } from "graphql-request";
-const url = import.meta.env.CONTENT_API;
+
+const endpoint = import.meta.env.CONTENT_API;
+
+const transform = `
+  transformation: {
+    image: {
+      resize: { width: 800 }, 
+      quality: { value: 70 }
+    }, 
+    document: { 
+      output: { format: webp } 
+    }
+  }
+`;
 
 const queries = {
   categories: gql`
@@ -9,13 +22,13 @@ const queries = {
         pageTitle
         slug
         emoji {
-          url
+          url (${transform})
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -28,13 +41,13 @@ const queries = {
         pageTitle
         description
         logo {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
         shortLogo {
-          url
+          url (${transform})
         }
         summary {
           html
@@ -53,7 +66,7 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
       }
     }
@@ -64,7 +77,7 @@ const queries = {
         name
         slug
         emoji {
-          url
+          url (${transform})
         }
       }
     }
@@ -86,10 +99,10 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -111,10 +124,10 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -136,10 +149,10 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -161,10 +174,10 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -186,10 +199,10 @@ const queries = {
           html
         }
         image {
-          url
+          url (${transform})
         }
         ogImage {
-          url
+          url (${transform})
         }
       }
     }
@@ -201,10 +214,10 @@ const queries = {
         slug
         pageTitle
         ogImage {
-          url
+          url (${transform})
         }
         logo {
-          url
+          url (${transform})
         }
         cards(where: { draft: false }, first: 9999) {
           ... on Card {
@@ -214,7 +227,7 @@ const queries = {
               html
             }
             image {
-              url
+              url (${transform})
             }
             applyUrl
             rating
@@ -230,10 +243,10 @@ const queries = {
         slug
         pageTitle
         image {
-          url
+          url (${transform})
         }
         bannerImage {
-          url
+          url (${transform})
         }
         content1 {
           html
@@ -252,7 +265,7 @@ const queries = {
             slug
             applyUrl
             image {
-              url
+              url (${transform})
             }
           }
         }
@@ -266,11 +279,11 @@ const queries = {
         slug
         excerpt
         image {
-          url
+          url (${transform})
         }
         draft
         ogImage {
-          url
+          url (${transform})
         }
         content(first: 999) {
           ... on BlogContent {
@@ -281,7 +294,7 @@ const queries = {
           ... on HyperlinkedImage {
             url
             image {
-              url
+              url (${transform})
             }
             description
           }
@@ -293,11 +306,12 @@ const queries = {
 
 const hygraph = async (query, queryParam) => {
   try {
-    const res = await request(url, queries[query]);
+    const res = await request(endpoint, queries[query]);
     return res[queryParam || query] || [];
   } catch (error) {
     console.error("Error fetching data from Hygraph:", error);
     return [];
   }
 };
+
 export default hygraph;
